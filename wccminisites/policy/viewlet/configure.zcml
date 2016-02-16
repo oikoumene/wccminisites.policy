@@ -1,0 +1,17 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="wccminisites.policy">
+    
+    <browser:viewlet
+        name="plone.belowcontenttitle.documentbyline"
+        for="*"
+        manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
+        class="plone.app.layout.viewlets.content.DocumentBylineViewlet"
+        layer="..interfaces.IProductSpecific"
+        template="templates/document_byline.pt"
+        permission="zope2.View"
+        />
+    
+</configure>
