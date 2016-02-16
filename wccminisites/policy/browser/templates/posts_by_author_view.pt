@@ -1,0 +1,130 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+<body>
+
+    <metal:content-core fill-slot="content-core">
+        <!--<metal:block define-macro="listing" extend-macro="context/folder_listing/macros/content-core">
+          
+            <metal:entries fill-slot="entries">
+                <metal:block use-macro="context/folder_listing/macros/entries">
+                    <metal:entry fill-slot="entry">-->
+            <tal:block tal:define="pas_member context/@@pas_member;
+                                   brains view/contents;
+                                   toLocalizedTime nocall: context/@@plone/toLocalizedTime;
+                                   Batch python: modules['Products.CMFPlone'].Batch;     
+                                   b_size python: 20;
+                                   b_start python:request.get('b_start', 0);
+                                   batch python: Batch(brains, b_size, int(b_start), orphan=0);
+                                   navigation_root_url context/@@plone_portal_state/navigation_root_url;"
+                       tal:condition="brains">
+                <h2 tal:condition="python: request.name != ''" tal:content="string: Latest posts by ${view/authorValue}"></h2>
+                  <tal:entry tal:repeat="item batch">
+                        <div class="tileItem visualIEFloatFix"
+                           tal:define="item_object item/_unrestrictedGetObject;
+                                       item_creator item/listCreators;
+                                       item_modified item/ModificationDate;
+                                       item_title_or_id item/pretty_title_or_id;
+                                       item_description item/Description;
+                                       item_number repeat/item/number;
+                                       item_url item/getURL|item/absolute_url">
+                            
+                              <article class="post-article">
+                                    <h3 class="post_title">
+                                         <a href="#"
+                                                class="summary url"
+                                                tal:attributes="href item_url;"
+                                                tal:content="item_title_or_id">
+                                                 Item Title
+                                          </a> 
+                                    </h3>
+
+                                    <p class="post_author" tal:define="creators item_creator">
+                                      <tal:name tal:repeat=" creator creators" >
+                                        <element tal:define="author python:pas_member.info(creator)">
+                                          <a href="#" tal:attributes="href string:${context/absolute_url}/authors_view?id=${creator}" tal:content="author/name_or_id">
+                                          </a>
+                                          <a tal:condition="python: creator != creators[-1]">, </a>
+                                        </element>
+                                      </tal:name>
+                                    </p>
+                                  <!--   <p class="post_author">
+                                      <element tal:content="item_creator"></element>
+                                          <tal:name tal:condition="item_creator"
+                                          tal:define="author python:pas_member.info(item_creator)">
+                                                <a href="#" tal:attributes="href string:${navigation_root_url}/authors_view?id=${item_creator}"
+                                                      tal:content="author/name_or_id"
+                                                      tal:omit-tag="not:author">
+                                                     Author Name
+                                                </a>
+                                          
+                                          </tal:name>
+                                    </p>
+                                     -->
+                                    <div class="row">
+                              
+                                          <tal:block tal:condition="exists:item_object/image_large">
+                                                <div class="large-4 columns">
+                                                      <a href="#" tal:attributes="href item_url">
+                                                            <img src="" alt="" tal:replace="structure python: path('nocall:item_object/tag')(scale='large')" />
+                                                      </a>
+                                                </div>
+                                                <div class="large-8 columns">
+                                                      <p tal:condition="item_description" tal:content="item_description">Archbishop Emeritus Desmond Tutu has called on delegates attending next week’s United Nations Climate Summit in New York to take the first tangible steps to move humanity beyond the fossil fuel era.</p>
+                                                </div>
+                                          </tal:block>
+                                          
+                                          <tal:block tal:condition="python: not hasattr(item_object, 'getImage') or not bool(item_object.getImage())">
+                                                <div class="large-12 columns">
+                                                      <p tal:condition="item_description" tal:content="item_description">Description here</p>
+                                                </div>
+                                          </tal:block>
+                                    </div>
+                                    
+                                    <p class="post_tag" tal:define="tags item/Subject|nothing"
+                                          tal:condition="tags">
+                                        
+                                        <tal:filedunder i18n:translate="label_tags">Tags:</tal:filedunder>
+                                          <span tal:repeat="tag tags">
+                                              <a href=""
+                                                 class="link-tag"
+                                                 rel="tag"
+                                                 tal:content="tag"
+                                                 tal:attributes="href string:${navigation_root_url}/search?Subject%3Alist=${tag}">
+                                                 Tag
+                                              </a><tal:separator condition="not: repeat/tag/end">,</tal:separator>
+                                          </span>
+                                          <br/>
+                                    </p>
+                                    
+                                    <div class="comment-count" tal:define="numComments python: view.totalComments(item_object)" tal:condition="numComments">
+                                          <i class="fa fa-comment fa-2x"></i>
+                                          <span tal:content="numComments">10</span>
+                                          <tal:if tal:condition="python: numComments > 1">
+                                                <span class="hide">Comments</span>
+                                          </tal:if>
+                                          <tal:if tal:condition="python: numComments <= 1">
+                                                <span class="hide">Comment</span>
+                                          </tal:if>
+                                    </div>
+                              </article> 
+                        
+                          
+      
+                        </div>
+                  </tal:entry>
+                  <div metal:use-macro="context/batch_macros/macros/navigation" />
+            </tal:block>
+                    <!--</metal:entry>
+                </metal:block>
+            </metal:entries>
+        </metal:block>-->
+    </metal:content-core>
+
+</body>
+</html>

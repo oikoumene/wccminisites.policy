@@ -1,0 +1,228 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <head>
+        <metal:block fill-slot="top_slot"
+                     tal:define="dummy python:request.set('disable_border',1);
+                                 disable_column_one python:request.set('disable_plone.leftcolumn',1);
+                                 disable_column_two python:request.set('disable_plone.rightcolumn',1);" />
+        
+    </head>
+    <body>
+        <metal:main fill-slot="content">
+            <tal:main-macro metal:define-macro="main"
+                            tal:define="site_properties here/portal_properties/site_properties;
+                                        allowAnonymousViewAbout python:site_properties.getProperty('allowAnonymousViewAbout', True);
+                                        isAnon context/@@plone_portal_state/anonymous;
+                                        author_info view/author_info;
+                                        portal_url context/@@plone_portal_state/navigation_root_url;
+                                        here_url context/@@plone_context_state/object_url;
+                                        member context/@@plone_portal_state/member;
+                                        portal context/@@plone_portal_state/portal;
+                                        email_from_address portal/email_from_address;
+                                        pas_member context/@@pas_member">
+            
+            
+                <tal:noAuthor condition="not: view/author_data">
+                    <dl class="portalMessage error">
+                        <dt i18n:translate="">
+                            Error
+                        </dt>
+                        <dd i18n:translate="text_no_user_by_name">
+                            No user by that name.
+                        </dd>
+                    </dl>
+                    <div id="content">
+                        &nbsp;
+                    </div>
+                </tal:noAuthor>
+                
+                <tal:haveAuthor condition="python: view.author_data()">
+                    
+                    <div metal:use-macro="context/global_statusmessage/macros/portal_message">
+                        Portal status message
+                    </div>
+                    <div id="content">
+                        <div id="content-core">
+                            <!-- Author information -->
+                            <section class="author-prof-wrapper">
+                                <div class="author-prof">
+                                    <img src=""
+                                        alt=""
+                                        class="portraitPhoto"
+                                        width="300"
+                                        tal:attributes="src python: author_info['portrait'].absolute_url()" />
+                                    <div>
+                                        <p class="documentFirstHeading" tal:condition="python: author_info['fullname']" tal:content="python: author_info['fullname'].title()">
+                                            Author name
+                                        </p>
+                                        <p class="documentFirstHeading" tal:condition="python: not author_info['fullname']" tal:content="python: author_info['id']">
+                                            Author ID
+                                        </p>
+                                        
+                                        <p class="discreet">
+                                            <tal:location condition="python: author_info['location']"
+                                                          i18n:translate="text_location">
+                                                Location:
+                                                <span tal:content="python: author_info['location']"
+                                                      tal:omit-tag=""
+                                                      i18n:name="location">
+                                                    Some location
+                                                </span>
+                                            </tal:location>
+                    
+                                            <tal:language condition="python: author_info['language']">
+                                                &mdash;
+                                                <span i18n:translate="label_main_language">Main Language:</span>
+                                                <span tal:replace="python: author_info['language']">Some language</span>
+                                            </tal:language>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="_documentDescription" tal:content="structure python: author_info['user_biography']">
+                                    Author description.
+                                </div>
+                            </section>
+                            
+                            <div class="visualClear"><!-- --></div>
+                        
+                            <tal:authorContent define="author_content python: view.posts(author_info['id'])"
+                                                   condition="author_content">
+                                <h2 i18n:translate="heading_author_content">
+                                    Latest posts created by this user
+                                </h2>
+                                <div metal:define-macro="user_content_listing">
+                                    <tal:entry tal:repeat="item author_content">
+                                        <div class="tileItem visualIEFloatFix">
+                                            <article class="post-article" tal:condition="not: repeat/item/start">
+                                                <h3 class="post_title">
+                                                    <a href="#"
+                                                       class="summary url"
+                                                       tal:attributes="href python:item['path'];"
+                                                       tal:content="python: item['title']">
+                                                               Item Title
+                                                    </a>
+                                                </h3>
+                                                <p class="post_author" tal:define="creators python: item['creator']">
+
+                                                  <tal:name tal:repeat=" creator creators" >
+                                                    <element tal:define="author python:pas_member.info(creator)">
+                                                      <a href="#" tal:attributes="href string:${context/absolute_url}/authors_view?id=${creator}"
+                                             tal:content="author/name_or_id">
+                                                      </a>
+                                                      <a tal:condition="python: creator != creators[-1]">, </a>
+
+                                                    </element>
+                                                  </tal:name>
+
+
+                                                  <!--   <tal:name tal:condition="python: item['creator']"
+                                                                    tal:define="author python:pas_member.info(item['creator'])">
+                                                        <span tal:content="python: item['creator']"/>
+                                                    </tal:name> -->
+                                                </p>
+                                                <div class="row">
+                                                    <div class="large-12 columns">
+                                                        <p tal:condition="python: item['description']" tal:content="python: item['description']">Content description</p>
+                                                    </div>
+                                                </div>
+                                                <div class="comment-count" tal:define="numComments python: view.totalComments(item['obj'])" tal:condition="numComments">
+                                                    <i class="fa fa-comment fa-2x"></i>
+                                                    <span tal:content="python: numComments">10</span>
+                                                    <tal:if tal:condition="python: numComments > 1">
+                                                          <span class="hide">Comments</span>
+                                                    </tal:if>
+                                                    <tal:if tal:condition="python: numComments <= 1">
+                                                          <span class="hide">Comment</span>
+                                                    </tal:if>
+                                                </div>
+                                            </article>
+                                            <article id="f_post-article" class="post-article" tal:condition="repeat/item/start">
+                                                <h2>
+                                                    <a href="#"
+                                                       class="summary url"
+                                                       tal:attributes="href python:item['path'];"
+                                                       tal:content="python: item['title']">
+                                                               Item Title
+                                                    </a>
+                                                </h2>
+                                                 <p class="post_author" tal:define="creators python: item['creator']">
+                                                  <tal:name tal:repeat=" creator creators" >
+                                                    <element tal:define="author python:pas_member.info(creator)">
+                                                      <a href="#" tal:attributes="href string:${context/absolute_url}/authors_view?id=${creator}"
+                                             tal:content="author/name_or_id">
+                                                      </a>
+                                                      <a tal:condition="python: creator != creators[-1]">, </a>
+                                                    </element>
+                                                  </tal:name>
+                                                </p>
+
+                                             <!--    <p class="post_author">
+                                                    <tal:name tal:condition="python: item['creator']"
+                                                                    tal:define="author python:pas_member.info(item['creator'])">
+                                                        <span tal:content="python: item['creator']"/>
+                                                    </tal:name>
+                                                </p> -->
+                                                <div class="row">
+                                                <div class="large-4 columns">
+                                                  <a href="#" tal:define="item_object python: item['obj']"
+                                                          tal:condition="exists:item_object/image_large"
+                                                          tal:attributes="href python: item['path']">
+                                                           <img src="" alt=""
+                                                                tal:replace="structure python: path('nocall:item_object/tag')(scale='large')" />
+                                                    </a>
+                                                </div>
+                                                <div class="large-8 columns">
+                                                    <p tal:condition="python: item['description']" tal:content="python: item['description']">Content description</p>
+                                                </div>
+                                                <div class="comment-count" tal:define="numComments python: view.totalComments(item['obj'])" tal:condition="numComments">
+                                                    <i class="fa fa-comment fa-2x"></i>
+                                                    <span tal:content="python: numComments">10</span>
+                                                    <tal:if tal:condition="python: numComments > 1">
+                                                          <span class="hide">Comments</span>
+                                                    </tal:if>
+                                                    <tal:if tal:condition="python: numComments <= 1">
+                                                          <span class="hide">Comment</span>
+                                                    </tal:if>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    </tal:entry>
+                                </div>
+                             <!--    <p>
+                                    <a href=""
+                                       tal:define="author python: author_info['id']"
+                                       tal:attributes="href string:$here_url/search?Creator=${author}&amp;sort_on=created&amp;sort_order=reverse"
+                                       i18n:translate="go_to_search_author_content">
+                                        All content created by
+                                        <span i18n:name="user" tal:omit-tag="" tal:content="python:author_info['fullname'] or author"/>&hellip;
+                                    </a>
+                                </p> -->
+                                <p tal:define="author python: author_info['id']">
+                                    <a tal:attributes="href string:${portal_url}/posts_by_author_view?name=${author}">View All Posts</a>
+                                </p>
+                                
+                            </tal:authorContent>
+                        </div>
+                    </div>
+                    
+                    
+                    <div id="subscribe-rss" tal:define="author python: author_info['id']">
+                        <a href="" tal:attributes="href string: ${portal_url}/search_rss?Creator=${author}">Subscribe to an always-updated RSS feed.</a>
+                    </div>
+                </tal:haveAuthor>
+                
+            </tal:main-macro>
+            
+            
+            
+            
+        
+        </metal:main>
+    </body>
+</html>
