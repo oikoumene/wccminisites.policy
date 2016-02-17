@@ -8,7 +8,7 @@
         name="plone.belowcontenttitle.documentbyline"
         for="*"
         manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
-        class="plone.app.layout.viewlets.content.DocumentBylineViewlet"
+        class=".document_byline.document_byline"
         layer="..interfaces.IProductSpecific"
         template="templates/document_byline.pt"
         permission="zope2.View"
