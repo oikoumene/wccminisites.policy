@@ -1,0 +1,12 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+    <browser:menuItem
+      for="Products.CMFCore.interfaces.ISiteRoot"
+      menu="plone_displayviews"
+      title="Homepage Custom View"
+      action="@@homepage_customview"
+      />
+
+</configure>
