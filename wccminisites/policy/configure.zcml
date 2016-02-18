@@ -12,6 +12,7 @@
     <includeDependencies package="." />
     <grok:grok package="." />
     <include package=".viewlet"/>
+    <include package=".portlet"/>
     <i18n:registerTranslations directory="locales" />
 
     <!-- -*- extra stuff goes here -*- -->
