@@ -1,0 +1,9 @@
+<div class="portlet"
+    i18n:domain="wccminisites.policy" tal:condition="not: context/@@plone_portal_state/anonymous">
+    <a tal:define="user view/logged_user;
+                    header view/header_val"
+        tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/author_view?id=${user}">
+        <span class="button" tal:content="header"/>
+        
+    </a>
+</div>
