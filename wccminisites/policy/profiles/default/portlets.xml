@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<portlets>
+
+<!-- -*- extra stuff goes here -*- -->
+    <portlet
+        addview="wccminisites.policy.ProfileLinkPortlet"
+        title="Profile Link Portlet"
+        description=""
+    />
+
+</portlets>
