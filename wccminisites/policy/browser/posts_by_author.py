@@ -4,12 +4,14 @@ from Products.ATContentTypes.interface import IATFolder
 from Products.CMFCore.interfaces import ISiteRoot
 from plone.app.discussion.interfaces import IConversation, IComment
 from Products.CMFPlone.PloneBatch import Batch
+from wccminisites.policy.interfaces import IProductSpecific
 
 grok.templatedir('templates')
 
 class posts_by_author(grok.View):
     grok.context(ISiteRoot)
     grok.require('zope2.View')
+    grok.layer(IProductSpecific)
 
     @property
     def catalog(self):
