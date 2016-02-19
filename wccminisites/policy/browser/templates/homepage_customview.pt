@@ -86,7 +86,9 @@
                         </div>
                   </tal:entry>
                   <tal:block>
-                        <a tal:attributes="href string:${context/absolute_url}/blog-stories">More</a>
+                        <p style="text-align: right;margin-top: 1.33333rem;">
+                            <a tal:attributes="href string:${context/absolute_url}/blog-stories">More</a>
+                        </p>
                   </tal:block>
             </tal:block>
                     <!--</metal:entry>
