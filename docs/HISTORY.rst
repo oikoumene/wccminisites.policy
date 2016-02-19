@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0dev1.0 - feb 19
+---------------------
+-initial progress
+
 '1.0' - Unreleased
 ---------------------
 
