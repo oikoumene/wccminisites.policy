@@ -59,7 +59,7 @@
                                           </tal:block>
                                           
                                     </div>
-                                    <p>
+                                    <p class="post_rmore">
                                           <a href="" tal:attributes="href item_url"> <span i18n:translate="read_more">Read More.</span>  </a>
                                     </p>
                                   
