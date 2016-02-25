@@ -19,4 +19,4 @@ class homepage_customview(grok.View):
         return self.catalog.unrestrictedSearchResults(portal_type=('News Item','File','Document'),
                                                       sort_on='created',
                                                       sort_order='reverse',
-                                                      review_state='published')[:4]
+                                                      review_state='published')[:5]
