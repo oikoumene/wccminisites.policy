@@ -16,7 +16,7 @@ class homepage_customview(grok.View):
         return getToolByName(self.context, 'portal_catalog')
     
     def contents(self):
-        return self.catalog.unrestrictedSearchResults(portal_type='News Item',
+        return self.catalog.unrestrictedSearchResults(portal_type=('News Item','File','Document'),
                                                       sort_on='created',
                                                       sort_order='reverse',
                                                       review_state='published')[:4]
