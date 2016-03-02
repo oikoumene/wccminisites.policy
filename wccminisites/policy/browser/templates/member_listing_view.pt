@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+<body>
+
+    <metal:content-core fill-slot="content-core">
+
+
+            <tal:block tal:define="pas_member context/@@pas_member;
+                                   brains view/network_group;
+                                   toLocalizedTime nocall: context/@@plone/toLocalizedTime;
+                                   navigation_root_url context/@@plone_portal_state/navigation_root_url;" tal:condition="brains">
+                  <tal:entry tal:repeat="item brains">
+                        <div>
+                            <img class="portraitPhoto" width='75' tal:attributes="src python: item['img']"/>
+                            <a tal:attributes="href python: navigation_root_url+'/author_view?id='+item['username']">
+                                <p tal:content="python: item['fullname']"/>
+                            </a>
+                        </div>
+                  </tal:entry>
+
+            </tal:block>
+
+    </metal:content-core>
+
+</body>
+</html>
