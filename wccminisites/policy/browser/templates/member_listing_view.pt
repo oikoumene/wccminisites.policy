@@ -7,26 +7,53 @@
       i18n:domain="plone">
 
 <body>
+    
+    <metal:styleslot fill-slot='style_slot'>
+        <style type="text/css" media="all">
+
+            .member-image-listing{
+                display: inline-block;
+                width: 200px;
+                height: 200px;
+                margin: 10px;
+                position: relative;
+                overflow: hidden
+            }
+            .member-image-listing > img{
+                width: 100%;
+            }
+            .member-image-listing > p{
+                position: absolute;
+                bottom: 0;
+                background-color:rgba(255,255,255,0.7);
+                display: block;
+                width: 100%;
+                margin-bottom: 0;
+                padding: 0 10px;
+            }
+           
+        </style>  
+    </metal:styleslot>
 
     <metal:content-core fill-slot="content-core">
 
             <div tal:content="structure context/getText"/>
-            <ul class="small-block-grid-2 medium-block-grid-4 large-block-grid-6">
                 <tal:block tal:define="pas_member context/@@pas_member;
                                        brains view/network_group;
                                        toLocalizedTime nocall: context/@@plone/toLocalizedTime;
                                        navigation_root_url context/@@plone_portal_state/navigation_root_url;" tal:condition="brains">
                       <tal:entry tal:repeat="item brains">
-                            <li>
-                                <img class="portraitPhoto" width='286' tal:attributes="src python: item['img']"/>
-                                <a tal:attributes="href python: navigation_root_url+'/author_view?id='+item['username']">
-                                    <p tal:content="python: item['fullname']"/>
-                                </a>
-                            </li>
+                            <div class="member-image-listing">
+                                <img class="portraitPhoto" tal:attributes="src python: item['img']"/>
+                                <p>
+                                    <a tal:attributes="href python: navigation_root_url+'/author_view?id='+item['username']">
+                                        <span tal:content="python: item['fullname']"/>
+                                    </a>
+                                </p>
+                            </div>
                       </tal:entry>
     
                 </tal:block>
-            </ul>
 
     </metal:content-core>
 
