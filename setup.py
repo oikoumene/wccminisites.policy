@@ -33,6 +33,7 @@ setup(name='wccminisites.policy',
           'collective.dexteritytextindexer',
           'plone.app.multilingual',
           'plone.multilingualbehavior',
+          'wccminisite.app',
           # -*- Extra requirements: -*-
       ],
       extras_require={
