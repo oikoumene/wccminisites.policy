@@ -15,6 +15,10 @@
             <metal:entries fill-slot="entries">
                 <metal:block use-macro="context/folder_listing/macros/entries">
                     <metal:entry fill-slot="entry">-->
+            <tal:if tal:condition="context/@@plone_portal_state/anonymous">
+                  <span tal:define="test view/login_redirect"></span>
+            </tal:if>
+        
             <tal:block tal:define="pas_member context/@@pas_member;
                                    brains view/contents;
                                    toLocalizedTime nocall: context/@@plone/toLocalizedTime;
