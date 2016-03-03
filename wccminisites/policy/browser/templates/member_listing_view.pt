@@ -11,20 +11,22 @@
     <metal:content-core fill-slot="content-core">
 
             <div tal:content="structure context/getText"/>
-            <tal:block tal:define="pas_member context/@@pas_member;
-                                   brains view/network_group;
-                                   toLocalizedTime nocall: context/@@plone/toLocalizedTime;
-                                   navigation_root_url context/@@plone_portal_state/navigation_root_url;" tal:condition="brains">
-                  <tal:entry tal:repeat="item brains">
-                        <div>
-                            <img class="portraitPhoto" width='75' tal:attributes="src python: item['img']"/>
-                            <a tal:attributes="href python: navigation_root_url+'/author_view?id='+item['username']">
-                                <p tal:content="python: item['fullname']"/>
-                            </a>
-                        </div>
-                  </tal:entry>
-
-            </tal:block>
+            <ul class="small-block-grid-2 medium-block-grid-4 large-block-grid-6">
+                <tal:block tal:define="pas_member context/@@pas_member;
+                                       brains view/network_group;
+                                       toLocalizedTime nocall: context/@@plone/toLocalizedTime;
+                                       navigation_root_url context/@@plone_portal_state/navigation_root_url;" tal:condition="brains">
+                      <tal:entry tal:repeat="item brains">
+                            <li>
+                                <img class="portraitPhoto" width='286' tal:attributes="src python: item['img']"/>
+                                <a tal:attributes="href python: navigation_root_url+'/author_view?id='+item['username']">
+                                    <p tal:content="python: item['fullname']"/>
+                                </a>
+                            </li>
+                      </tal:entry>
+    
+                </tal:block>
+            </ul>
 
     </metal:content-core>
 
