@@ -10,7 +10,7 @@
 
     <metal:content-core fill-slot="content-core">
 
-
+            <div tal:content="structure context/getText"/>
             <tal:block tal:define="pas_member context/@@pas_member;
                                    brains view/network_group;
                                    toLocalizedTime nocall: context/@@plone/toLocalizedTime;
