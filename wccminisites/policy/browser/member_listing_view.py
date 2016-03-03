@@ -7,6 +7,8 @@ from wccminisites.policy.interfaces import IProductSpecific
 
 grok.templatedir('templates')
 
+# default view for 'the-network' page
+
 class member_listing_view(grok.View):
     grok.context(IContentish)
     grok.require('zope2.View')
