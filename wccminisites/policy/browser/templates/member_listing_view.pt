@@ -52,14 +52,6 @@
                                 </p>
                             </div>
                       </tal:entry>
-                      <div class="member-image-listing">
-                                <img class="portraitPhoto" src="http://gpsc.duke.edu/wp-content/uploads/Portrait_Yang_Yang.jpg">
-                                <p>
-                                    <a href="http://localhost:8080/wccminsite/author_view?id=ankwcc">
-                                        <span>Annegret Kapp</span>
-                                    </a>
-                                </p>
-                            </div>
     
                 </tal:block>
 
