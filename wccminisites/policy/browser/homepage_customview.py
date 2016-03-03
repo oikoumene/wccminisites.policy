@@ -20,3 +20,10 @@ class homepage_customview(grok.View):
                                                       sort_on='created',
                                                       sort_order='reverse',
                                                       review_state='published')[:5]
+    
+    def login_redirect(self):
+        url = self.context.absolute_url()
+        return self.request.response.redirect(url+'/login')
+        
+    
+    
