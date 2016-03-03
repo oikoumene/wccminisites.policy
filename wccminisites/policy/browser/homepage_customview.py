@@ -19,7 +19,7 @@ class homepage_customview(grok.View):
         return self.catalog.unrestrictedSearchResults(portal_type=('News Item','File','Document'),
                                                       sort_on='created',
                                                       sort_order='reverse',
-                                                      review_state='published')[:5]
+                                                      review_state='internally_published')[:5]
     
     def login_redirect(self):
         url = self.context.absolute_url()
