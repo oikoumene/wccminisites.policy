@@ -27,12 +27,14 @@ class member_listing_view(grok.View):
         groups = self.portal_groups.getGroupById('network')
         if groups:
             for gr in groups.getGroupMembers():
-                data = {}
+                
                 member = self.portal_membership.getMemberById(gr.getUserName())
-                data['img'] = self.portal_membership.getPersonalPortrait(gr.getUserName()).absolute_url()
-                data['fullname'] = member.getProperty('fullname')
-                data['username'] = gr.getUserName()
-                results.append(data)
+                if member:
+                    data = {}
+                    data['img'] = self.portal_membership.getPersonalPortrait(gr.getUserName()).absolute_url()
+                    data['fullname'] = member.getProperty('fullname')
+                    data['username'] = gr.getUserName()
+                    results.append(data)
         
         if results:
             results.sort(key = lambda x :x['fullname'])
