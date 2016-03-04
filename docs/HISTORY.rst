@@ -1,5 +1,10 @@
 Changelog
 =========
+
+0dev1.0.3 - mar 4
+---------------------
+-modified codes based on recent comments in rd
+
 0dev1.0.1 - feb 22
 ---------------------
 -modified views
