@@ -64,6 +64,9 @@
                                         <p class="documentFirstHeading" tal:condition="python: not author_info['fullname']" tal:content="python: author_info['id']">
                                             Author ID
                                         </p>
+                                        <p tal:define="email python: author_info['email']" tal:condition="email">
+                                          <a tal:attributes="href string: mailto:${email}" tal:content="email"/>
+                                        </p>
                                         
                                         <p class="discreet">
                                             <tal:location condition="python: author_info['location']"
