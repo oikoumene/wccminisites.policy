@@ -34,6 +34,7 @@ setup(name='wccminisites.policy',
           'plone.app.multilingual',
           'plone.multilingualbehavior',
           'wccminisite.app',
+          'collective.easytemplate',
           # -*- Extra requirements: -*-
       ],
       extras_require={
