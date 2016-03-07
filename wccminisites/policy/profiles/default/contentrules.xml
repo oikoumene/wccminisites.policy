@@ -52,7 +52,7 @@
      
      
      -------------------------
-     Interfaith Climate Portal
+     WCC Youth Network
      http://www.youth.oikoumene.org</property>
     <property name="recipients">${owner_emails}</property>
     <property name="subject">Submission Received</property>
