@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0dev1.0.4'
+version = '0dev1.0.5'
 
 setup(name='wccminisites.policy',
       version=version,

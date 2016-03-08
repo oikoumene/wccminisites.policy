@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0dev1.0.5 - mar 8
+---------------------
+-added contentrule packages and fixed mailto and description on authorview
+
 0dev1.0.4 - mar 4
 ---------------------
 -added workflow
