@@ -36,6 +36,7 @@ setup(name='wccminisites.policy',
           'wccminisite.app',
           'collective.easytemplate',
           'collective.contentrules.mailtogroup',
+          'collective.contentrules.mailtolocalrole',
           # -*- Extra requirements: -*-
       ],
       extras_require={
