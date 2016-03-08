@@ -35,6 +35,7 @@ setup(name='wccminisites.policy',
           'plone.multilingualbehavior',
           'wccminisite.app',
           'collective.easytemplate',
+          'collective.contentrules.mailtogroup',
           # -*- Extra requirements: -*-
       ],
       extras_require={
