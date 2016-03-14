@@ -38,7 +38,7 @@ setup(name='wccminisites.policy',
           'collective.contentrules.mailtogroup',
           'collective.contentrules.mailtolocalrole',
           #'ilokn.registration',
-          'wcc.registration',
+          #'wcc.registration',
           # -*- Extra requirements: -*-
       ],
       extras_require={
