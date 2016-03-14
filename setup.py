@@ -38,7 +38,8 @@ setup(name='wccminisites.policy',
           'collective.contentrules.mailtogroup',
           'collective.contentrules.mailtolocalrole',
           #'ilokn.registration',
-          #'wcc.registration',
+          'wcc.registration',
+          'quintagroup.captcha.core',
           # -*- Extra requirements: -*-
       ],
       extras_require={
