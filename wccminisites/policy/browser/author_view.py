@@ -37,11 +37,12 @@ class author_view(grok.View):
                 if author:
                     results['fullname'] = author.getProperty('fullname')
                     results['portrait'] = membership.getPersonalPortrait(request.form['id'])
-                    results['user_biography'] = author.getProperty('description')
+                    results['user_biography'] = author.getProperty('user_biography')
                     results['id'] = request.form['id']
                     results['location'] = author.getProperty('location')
                     results['language'] = author.getProperty('language')
                     results['email'] = author.getProperty('email')
+                    results['twitter'] = author.getProperty('twitter_username')
         return results
                 
     def posts(self, author=None):
