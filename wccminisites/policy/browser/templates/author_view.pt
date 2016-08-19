@@ -50,7 +50,7 @@
                     <div id="content">
                         <div id="content-core">
                             <!-- Author information -->
-                            <section class="author-prof-wrapper">
+                            <section class="author-prof-wrapper" style="word-wrap: break-word">
                                 <div class="author-prof">
                                     <img src=""
                                         alt=""
