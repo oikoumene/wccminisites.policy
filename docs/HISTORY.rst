@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.0 - aug 19
+------------
+-added twitter section and edit profile button and necessary fields for extended membership fields
+
 0dev1.0.5 - mar 8
 ---------------------
 -added contentrule packages and fixed mailto and description on authorview
