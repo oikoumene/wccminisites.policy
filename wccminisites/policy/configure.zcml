@@ -17,4 +17,19 @@
 
     <!-- -*- extra stuff goes here -*- -->
 
+    <browser:page
+        for="Products.CMFPlone.Portal.PloneSite"
+        name="personal-information"
+        class=".userdataschema.CustomizedUserDataPanel"
+        permission="cmf.SetOwnProperties"
+    />
+
+    <browser:page
+        for="Products.CMFPlone.Portal.PloneSite"
+        name="register"
+        class=".register.ExtendRegistrationForm"
+        permission="zope.Public"
+    />
+	
+
 </configure>
