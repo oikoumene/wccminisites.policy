@@ -67,6 +67,12 @@ class author_view(grok.View):
     def totalComments(self, context=None):
         comments = IConversation(context)
         return len(comments)
-        
+    
+    def filter_edit_profile(self):
+        current_user = self.context.portal_membership.getAuthenticatedMember().getUserName()
+        if 'id' in self.request.form:
+            if self.request.form['id'] == current_user:
+                return True
+        return False
         
                 

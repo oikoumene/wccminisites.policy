@@ -86,16 +86,31 @@
                                             </tal:language>
                                         </p>
                                     </div>
-                                    <div i18n:domain="wccminisites.policy" tal:condition="not: context/@@plone_portal_state/anonymous">
+                                    <!--<div i18n:domain="wccminisites.policy" tal:condition="not: context/@@plone_portal_state/anonymous">-->
+									<div i18n:domain="wccminisites.policy" tal:condition="view/filter_edit_profile">
 										<a tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/@@personal-information">
 											<span class="button" tal:content="string:Edit Profile"/>
 				
 										</a>
 									</div>
+									
+									<div id="author-twitter-feed">
+										<div tal:define="twittername python: author_info['twitter']" tal:condition="twittername">
+										 <a
+										 tal:content= "python: 'Tweets by' + twittername "
+										 class="twitter-timeline" 
+										 tal:attributes="href python: 'https://twitter.com/'+ twittername;
+														 data-widget-id python: '588968200643092480';
+														 data-screen-name twittername;">Tweets by</a>
+										 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+										 </div>
+									</div>
                                 </div>
                                 <div class="_documentDescription" tal:content="structure python: author_info['user_biography']">
                                     Author description.
                                 </div>
+								
+								
                                 
                             </section>
                             
@@ -222,17 +237,7 @@
                         </div>
                     </div>
 
-                    <div id="author-twitter-feed">
-                        <div tal:define="twittername python: author_info['twitter']" tal:condition="twittername">
-                         <a
-                         tal:content= "python: 'Tweets by' + twittername "
-                         class="twitter-timeline" 
-                         tal:attributes="href python: 'https://twitter.com/'+ twittername;
-                                         data-widget-id python: '588968200643092480';
-                                         data-screen-name twittername;">Tweets by</a>
-                         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-                         </div>
-                    </div>
+                    
                     
                     <div id="subscribe-rss" tal:define="author python: author_info['id']">
                         <a href="" tal:attributes="href string: ${portal_url}/search_rss?Creator=${author}">Subscribe to an always-updated RSS feed.</a>
