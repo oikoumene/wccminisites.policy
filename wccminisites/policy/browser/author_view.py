@@ -47,7 +47,7 @@ class author_view(grok.View):
                 
     def posts(self, author=None):
         catalog = self.catalog
-        brains = catalog.unrestrictedSearchResults(dict(sort_on='created', sort_order='reverse', portal_type=('News Item', 'Page', 'Event'), review_state='published'))
+        brains = catalog.unrestrictedSearchResults(dict(sort_on='created', sort_order='reverse', portal_type=('News Item', 'Page', 'Event'), review_state=('published', 'external', 'internally_published')))
         results = []
         for brain in brains:
             if author in brain.listCreators:
