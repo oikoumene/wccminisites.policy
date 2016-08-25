@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <contentrules>
- <rule name="rule-1" title="Notification for New Contents Added" cascading="False"
+ <rule name="rule-7" title="Notification for New Contents Added" cascading="False"
     description="Notification for New Contents Added"
     enabled="True" event="zope.lifecycleevent.interfaces.IObjectAddedEvent"
     stop-after="False">
@@ -55,7 +55,7 @@ This is an automatically generated notification. Please do not reply to this mes
   </actions>
  </rule>
 
- <rule name="rule-2" title="Notification for Published Item" cascading="False"
+ <rule name="rule-8" title="Notification for Published Item" cascading="False"
     description="Notification for Published Item"
     enabled="True" event="Products.CMFCore.interfaces.IActionSucceededEvent"
     stop-after="False">
