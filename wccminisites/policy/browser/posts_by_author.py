@@ -23,7 +23,7 @@ class posts_by_author(grok.View):
         brains = self.catalog.searchResults(portal_type=('News Item', 'Page', 'Event'),
                                                   sort_on='created',
                                                   sort_order='reverse',
-                                                  review_state='published')
+                                                  review_state='shared_intranet')
         for brain in brains:
             if author in brain.listCreators or author == '':
                 results.append(brain)
