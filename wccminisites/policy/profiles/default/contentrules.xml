@@ -15,10 +15,6 @@
                 </property>
     </condition>
     </conditions>
-  <actions>
-   <action type="plone.actions.Workflow">
-    <property name="transition">submit</property>
-   </action>
    <action type="collective.easytemplate.actions.Mail">
     <property name="source"/>
     <property
@@ -72,7 +68,7 @@ This is an automatically generated notification. Please do not reply to this mes
     </conditions>
   <actions>
    <action type="plone.actions.Workflow">
-    <property name="transition">publish</property>
+    <property name="transition">shared_intranet</property>
    </action>
    <action type="collective.easytemplate.actions.Mail">
     <property name="source"/>
