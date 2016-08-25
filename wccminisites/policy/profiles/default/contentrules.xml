@@ -10,7 +10,7 @@
                     <element>File</element>
                     <element>Document</element>
                     <element>Event</element>
-                    <element>Page</element>
+                    <element>Link</element>
                     <element>News Item</element>
                 </property>
     </condition>
