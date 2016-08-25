@@ -1,11 +1,9 @@
 <?xml version="1.0"?>
 <object name="portal_workflow" meta_type="Plone Workflow Tool">
- <property
-    name="title">Contains workflow definitions for your portal</property>
- <object name="intranet_workflow" meta_type="Workflow"/>
- <bindings>
-  <default>
-   <bound-workflow workflow_id="intranet_workflow"/>
-  </default>
+  <object name="wccminisites_intranet" meta_type="Workflow"/>	
+  <bindings>
+    <default>
+      <bound-workflow workflow_id="wccminisites_intranet"/>
+    </default>
  </bindings>
 </object>
