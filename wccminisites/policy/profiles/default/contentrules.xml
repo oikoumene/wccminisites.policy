@@ -54,4 +54,57 @@ This is an automatically generated notification. Please do not reply to this mes
    </action>
   </actions>
  </rule>
+
+ <rule name="rule-2" title="Notification for Published Item" cascading="False"
+    description="Notification for Published Item"
+    enabled="True" event="Products.CMFCore.interfaces.IActionSucceededEvent"
+    stop-after="False">
+    <conditions>
+            <condition type="plone.conditions.PortalType">
+                <property name="check_types">
+                    <element>File</element>
+                    <element>Document</element>
+                    <element>Event</element>
+                    <element>Link</element>
+                    <element>News Item</element>
+                </property>
+    </condition>
+    </conditions>
+  <actions>
+   <action type="plone.actions.Workflow">
+    <property name="transition">publish</property>
+   </action>
+   <action type="collective.easytemplate.actions.Mail">
+    <property name="source"/>
+    <property
+       name="message">New contributions have been published to the WCC Youth Network. 
+
+Click here {{ context.absolute_url() }} to read and respond.
+
+This is an automatically generated notification. Please do not reply to this message.          
+     
+     -------------------------
+     WCC Youth Network</property>
+    <property name="recipients">afterfive2015@gmail.com</property>
+    <property
+       name="subject">Congratulations your submitted content is already published on WCC Youth Network</property>
+   </action>
+   <action type="collective.easytemplate.actions.Mail">
+    <property name="source"/>
+    <property
+       name="message">This is to inform you that your submitted content is already published. You may view the details from the link below:
+     
+     {{ context.absolute_url() }}
+          
+     If you find that there are errors to your submission, please email youth@oikoumene.org
+     
+     
+     -------------------------
+     WCC Youth Network
+     http://www.youth.oikoumene.org</property>
+    <property name="recipients">${owner_emails}</property>
+    <property name="subject">Content Submission Received</property>
+   </action>
+  </actions>
+ </rule>
 </contentrules>
