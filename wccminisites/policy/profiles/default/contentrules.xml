@@ -9,6 +9,8 @@
                 <property name="check_types">
                     <element>File</element>
                     <element>Document</element>
+                    <element>Event</element>
+                    <element>Page</element>
                     <element>News Item</element>
                 </property>
     </condition>
@@ -20,24 +22,17 @@
    <action type="collective.easytemplate.actions.Mail">
     <property name="source"/>
     <property
-       name="message">A site visitor has just submitted a content in the site. Below are the details of the new content.
-     
-     Title: ${title}
-     
-     To review the above content, visit:
-     
-     {{ context.absolute_url() }}
-     
-     To approve the post and publish internally, click on the link below:
-     
-     {{ context.absolute_url() }}/content_status_modify?workflow_action=publish_internally
-     
+       name="message">New contributions have been added to the WCC Youth Network. 
+
+Click here {{ context.absolute_url() }} to read and respond.
+
+This is an automatically generated notification. Please do not reply to this message.          
      
      -------------------------
      WCC Youth Network</property>
     <property name="recipients">afterfive2015@gmail.com</property>
     <property
-       name="subject">Content Received</property>
+       name="subject">New contribution available on WCC Youth Network</property>
    </action>
    <action type="collective.easytemplate.actions.Mail">
     <property name="source"/>
@@ -55,7 +50,7 @@
      WCC Youth Network
      http://www.youth.oikoumene.org</property>
     <property name="recipients">${owner_emails}</property>
-    <property name="subject">Submission Received</property>
+    <property name="subject">Content Submission Received</property>
    </action>
   </actions>
  </rule>
