@@ -15,6 +15,7 @@
                 </property>
     </condition>
     </conditions>
+   <actions>
    <action type="collective.easytemplate.actions.Mail">
     <property name="source"/>
     <property
