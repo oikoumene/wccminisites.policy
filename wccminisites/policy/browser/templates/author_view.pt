@@ -117,7 +117,7 @@
 								<!--author created posts-->
 								<div class="medium-9 medium-pull-3 columns">
 									<!--author description-->
-									<div class="_documentDescription alert-box secondary" tal:content="structure python: 		author_info['user_biography']" />
+									<div class="_documentDescription" tal:content="structure python: 		author_info['user_biography']" />
 									
 								  <tal:authorContent define="author_content python: view.posts(author_info['id'])"
                                                    condition="author_content">
