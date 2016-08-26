@@ -2,6 +2,7 @@ from five import grok
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.interfaces import ISiteRoot
 from plone.app.discussion.interfaces import IConversation, IComment
+from Products.CMFCore.interfaces import IContentish
 
 grok.templatedir('templates')
 
@@ -47,9 +48,11 @@ class author_view(grok.View):
                 
     def posts(self, author=None):
         catalog = self.catalog
-        brains = catalog.unrestrictedSearchResults(dict(sort_on='created', sort_order='reverse', portal_type=('News Item', 'Page', 'Event'), review_state=('shared_intranet')))
+        brains = catalog.unrestrictedSearchResults(dict(sort_on='created', sort_order='reverse', portal_type=('News Item', 'Document', 'Event'), review_state=('shared_intranet')))
+        
         results = []
         for brain in brains:
+            
             if author in brain.listCreators:
                 obj = brain._unrestrictedGetObject()
                 data = {}
