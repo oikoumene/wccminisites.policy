@@ -12,7 +12,7 @@
  <permission>Delete objects</permission>
  <state state_id="private" title="Private">
   <description>Can only be seen and edited by the owner.</description>
-  <exit-transition transition_id="share_intranet"/>
+  <exit-transition transition_id="submit"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Editor</permission-role>
    <permission-role>Manager</permission-role>
@@ -48,6 +48,67 @@
    <permission-role>Editor</permission-role>
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Modify view template" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Sharing page: Delegate roles" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="pending" title="Pending">
+  <description>Can only be seen and edited by the owner.</description>
+  <exit-transition transition_id="share_intranet"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Add portal content" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Change portal events" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Copy or Move" acquired="True">
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="List folder contents" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
    <permission-role>Reviewer</permission-role>
    <permission-role>Site Administrator</permission-role>
   </permission-map>
@@ -138,7 +199,6 @@
   <description>Content owner retracts shared item to make it private</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=retract" category="workflow" icon="">Retract</action>
   <guard>
-   <guard-role>Owner</guard-role>
    <guard-role>Site Administrator</guard-role>
    <guard-role>Manager</guard-role>
   </guard>
@@ -146,6 +206,14 @@
  <transition transition_id="share_intranet" title="Share" new_state="shared_intranet" trigger="USER" before_script="" after_script="">
   <description>Share item with other registered users</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=share_intranet" category="workflow" icon="">Share: Intranet</action>
+  <guard>
+   <guard-role>Site Administrator</guard-role>
+   <guard-role>Manager</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="submit" title="Submit" new_state="pending" trigger="USER" before_script="" after_script="">
+  <description>Share item with other registered users</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=submit" category="workflow" icon="">Submit for Publishing</action>
   <guard>
    <guard-role>Owner</guard-role>
    <guard-role>Site Administrator</guard-role>
