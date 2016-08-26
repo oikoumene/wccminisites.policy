@@ -1,6 +1,9 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
-    xmlns:browser="http://namespaces.zope.org/browser">
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="wccminisites.policy">
 
     <browser:menuItem
       for="Products.CMFCore.interfaces.ISiteRoot"
@@ -8,5 +11,24 @@
       title="Homepage Custom View"
       action="@@homepage_customview"
       />
+    
+    <browser:page
+        for="Products.CMFCore.interfaces.IFolderish"
+        name="folder_summary_view"
+        class=".custom_summary_view.CustomSummaryView"
+        permission="zope2.Public"
+        layer="..interfaces.IProductSpecific"
+        template="templates/custom_summary_view.pt"
+        />
+    <browser:menuItems
+      for="Products.ATContentTypes.interface.IATFolder"
+      menu="plone_displayviews">
+        <browser:menuItem
+        title="Summary View"
+        action="folder_summary_view"
+        />
+        
+    </browser:menuItems>
+    
 
 </configure>
