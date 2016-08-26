@@ -63,15 +63,19 @@ class Renderer(base.Renderer):
         return False
             
     
-    def portrait_image(self):
+    def user_info(self):
         membership = self.membership
         request = self.request
         user_id = ''
-        portrait = '#'
+        result = {'portrait':'#', 'fullname':'', 'email':''}
         if 'id' in request.form:
             user_id = request.form['id']
-            portrait = membership.getPersonalPortrait(user_id).absolute_url()
-        return portrait
+            user_data = membership.getMemberById(user_id)
+            result['portrait'] = membership.getPersonalPortrait(user_id).absolute_url()
+            if user_data:
+                result['fullname'] = user_data.getProperty('fullname')
+                result['email'] = user_data.getProperty('email')
+        return result
         
 
 class AddForm(base.AddForm):

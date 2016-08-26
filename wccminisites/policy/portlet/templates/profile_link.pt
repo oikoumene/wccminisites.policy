@@ -1,10 +1,14 @@
 <div class="portlet"
-    i18n:domain="wccminisites.policy" tal:condition="not: context/@@plone_portal_state/anonymous">
+    i18n:domain="wccminisites.policy" tal:condition="not: context/@@plone_portal_state/anonymous" tal:define="user view/user_info">
     <tal:if tal:condition="view/is_profile_page">
         
         <div id="prof-img">
-            <img tal:attributes="src view/portrait_image" alt="" class="portraitPhoto" width="200">
+            <img tal:attributes="src python: user['portrait']" alt="" class="portraitPhoto" width="200">
         </div>
+        <ul id="prof-info">
+            <li tal:define="fullname python: user['fullname']" tal:content="python: fullname.title()"></li>
+            <li tal:content="python: user['email']"></li>
+        </ul>
     </tal:if>
     <div i18n:domain="wccminisites.policy">
         <a tal:condition="view/filter_edit_profile" tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/@@personal-information">
