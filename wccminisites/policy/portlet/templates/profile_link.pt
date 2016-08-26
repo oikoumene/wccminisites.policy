@@ -1,9 +1,22 @@
 <div class="portlet"
     i18n:domain="wccminisites.policy" tal:condition="not: context/@@plone_portal_state/anonymous">
-    <a tal:define="user view/logged_user;
-                    header view/header_val"
-        tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/author_view?id=${user}">
-        <span class="button expand" tal:content="header"/>
+    <tal:if tal:condition="view/is_profile_page">
         
-    </a>
+        <div id="prof-img">
+            <img tal:attributes="src view/portrait_image" alt="" class="portraitPhoto" width="200">
+        </div>
+    </tal:if>
+    <div i18n:domain="wccminisites.policy">
+        <a tal:condition="view/filter_edit_profile" tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/@@personal-information">
+            <span class="tiny button expand" tal:content="string:Edit Profile"/>
+
+        </a>
+        <a tal:condition="python: not view.is_profile_page()" tal:define="user view/logged_user;
+                    header view/header_val"
+            tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/author_view?id=${user}">
+            <span class="button expand" tal:content="header"/>
+            
+        </a>
+  </div>
+    
 </div>

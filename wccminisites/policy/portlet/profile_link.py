@@ -9,8 +9,10 @@ from plone.portlets.interfaces import IPortletDataProvider
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 from plone.app.portlets.portlets import base
-from Acquisition import aq_inner
+from Acquisition import aq_inner, aq_parent
 from wccminisites.policy import MessageFactory as _
+from zope.component import getUtility, getAdapter, getMultiAdapter
+from Products.CMFCore.interfaces import ISiteRoot
 
 
 class IProfileLink(IPortletDataProvider):
@@ -33,6 +35,10 @@ class Renderer(base.Renderer):
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
         
+    @property
+    def membership(self):
+        return getToolByName(self.context, 'portal_membership')
+        
     def header_val(self):
         return self.data.header
     
@@ -40,6 +46,33 @@ class Renderer(base.Renderer):
         context = aq_inner(self.context)
         membership = getToolByName(context, 'portal_membership')
         return membership.getAuthenticatedMember().getUserName()
+    
+    def is_profile_page(self):
+        curr_url = self.request.getURL()
+        is_root = self.context.__providedBy__(ISiteRoot)
+        
+        if 'author_view' in curr_url and is_root:
+            return True
+        return False
+    
+    def filter_edit_profile(self):
+        current_user = self.context.portal_membership.getAuthenticatedMember().getUserName()
+        if 'id' in self.request.form:
+            if self.request.form['id'] == current_user:
+                return True
+        return False
+            
+    
+    def portrait_image(self):
+        membership = self.membership
+        request = self.request
+        user_id = ''
+        portrait = '#'
+        if 'id' in request.form:
+            user_id = request.form['id']
+            portrait = membership.getPersonalPortrait(user_id).absolute_url()
+        return portrait
+        
 
 class AddForm(base.AddForm):
     form_fields = form.Fields(IProfileLink)
