@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.0dev1 - aug 31
+---------------
+-modified workflow, profile view, notifications and registration
+
 1.0 - aug 19
 ------------
 -added twitter section and edit profile button and necessary fields for extended membership fields
