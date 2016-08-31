@@ -1,9 +1,12 @@
 Changelog
 =========
 
+1.0dev1.1 - aug 31
+-added layer attribute
+
 1.0dev1 - aug 31
 ---------------
--modified workflow, profile view, notifications and registration
+-modified workflow, profile view, notifications and registrationg
 
 1.0 - aug 19
 ------------
