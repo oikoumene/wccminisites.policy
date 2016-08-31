@@ -30,6 +30,7 @@
         name="register"
         class=".register.ExtendRegistrationForm"
         permission="zope.Public"
+        layer=".interfaces.IProductSpecific"
     />
     
 	
