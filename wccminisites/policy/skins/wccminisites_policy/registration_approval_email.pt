@@ -7,12 +7,21 @@ To: "<tal:r replace="user/fullname"/>" <tal:r replace="structure string:<${user/
 Subject: Registration at <tal:r replace="portal/title"/> Approved
 Precedence: bulk
 
-Hi, <tal:r replace="user/fullname"/>
+Dear <tal:r replace="user/fullname"/>,
 
-Your registration has been approved.
-Your username is '<tal:r replace="user/username"/>' 
-and you may login after setting your password here:
+Congratulations! Your registration has been approved.
 
-<tal:r replace="python:here.pwreset_constructURL(reset['randomstring'])"/>.
+Here are your access details:
+Username: '<tal:r replace="user/username"/>' 
+
+Please click the link below to set your password and succesfully login to the portal:
+
+<tal:r replace="python:here.pwreset_constructURL(reset['randomstring'])"/>
+
+This is an automatically generated notification. Please do not reply to this message.
+
+-------------------------
+WCC Youth Network
+http://www.youth.oikoumene.org
 
 </tal:root>
