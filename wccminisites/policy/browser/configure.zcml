@@ -30,5 +30,16 @@
         
     </browser:menuItems>
     
+    <browser:page
+        class=".manage.ListPendingApproval"
+        name="index_html"
+        for="..interfaces.IRegistrationApproval"
+        template="templates/list_pending_approval.pt"
+        permission="plone.app.controlpanel.UsersAndGroups"/>
+    
+    <browser:defaultView
+        for="..interfaces.IRegistrationApproval"
+        name="index_html"/>
+    
 
 </configure>
