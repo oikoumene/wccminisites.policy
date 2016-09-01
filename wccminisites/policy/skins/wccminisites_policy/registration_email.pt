@@ -6,13 +6,19 @@ To: "<tal:r replace="user/fullname"/>" <tal:r replace="structure string:<${user/
 Subject: Registration at <tal:r replace="portal/title"/>
 Precedence: bulk
 
-Hi, <tal:r replace="user/fullname"/>
+Dear <tal:r replace="user/fullname"/>,
 
-Thank you for registering.
+Thank you for signing up!
 
-Your registration is now pending approval by facilitators.
-Within a day or two, you will receive another email
-with instructions to set your password and be able to login
+Your registration is now pending for approval by our facilitators.
+
+Within a day or two, you will receive another email with instructions to set your password and be able to login
 as a member.
+
+This is an automatically generated notification. Please do not reply to this message.
+
+-------------------------
+WCC Youth Network
+http://www.youth.oikoumene.org
 
 </tal:root>
