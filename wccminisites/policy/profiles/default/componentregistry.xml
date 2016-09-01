@@ -5,5 +5,8 @@
       interface="plone.app.users.userdataschema.IUserDataSchemaProvider"
       factory="wccminisites.policy.userdataschema.UserDataSchemaProvider"
     />
+<utility
+    interface="wccminisites.policy.interfaces.IRegistrationApproval"
+    object="wcc_minisites_registration_approval"/>
   </utilities>
 </componentregistry>

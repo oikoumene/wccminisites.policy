@@ -15,6 +15,12 @@
     <include package=".portlet"/>
     <include package=".browser"/>
     <i18n:registerTranslations directory="locales" />
+    
+    <cmf:registerDirectory
+      name="skins"
+      directory="skins"
+      recursive="True"
+      />
 
     <!-- -*- extra stuff goes here -*- -->
 
@@ -32,6 +38,19 @@
         permission="zope.Public"
         layer=".interfaces.IProductSpecific"
     />
+    
+    <subscriber 
+        for=".interfaces.IUserRegisteredEvent"
+        handler=".mailnotification.handle_register" />
+
+    <subscriber 
+        for=".interfaces.IUserRegisteredEvent"
+        handler=".mailnotification.handle_notify_register" />
+
+ 
+    <subscriber 
+        for=".interfaces.IUserApprovedEvent"
+        handler=".mailnotification.handle_approve" />
     
 	
 

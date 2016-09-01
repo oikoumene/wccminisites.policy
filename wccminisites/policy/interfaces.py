@@ -13,3 +13,26 @@ class ICaptchaSchema(Interface):
     captcha = Captcha(
         title=_(u'Type the code'),
         description=_(u'Type the code from the picture shown below.'))
+    
+class IUserApprovedEvent(Interface):
+    pass
+
+class IUserRejectedEvent(Interface):
+    pass
+
+class IUserRegisteredEvent(Interface):
+    pass
+
+class IRegistrationApproval(Interface):
+
+    def get(key):
+        pass
+
+    def add(key, data):
+        pass
+
+    def approve(key):
+        pass
+
+    def reject(key):
+        pass
