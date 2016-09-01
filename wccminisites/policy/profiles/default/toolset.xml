@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<tool-setup>
+ <required 
+     tool_id="wcc_minisites_registration_approval"
+     class="wccminisites.policy.registration_approval.RegistrationApproval"/>
+</tool-setup>
