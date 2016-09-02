@@ -6,9 +6,11 @@
 </head>
 <body>
     <div metal:fill-slot="main">
-<p>Thank you for registering.</p>
-<p>Your registration details have been submitted. You will also receive an email confirmation.</p>
-<p>A facilitator will review and approve your registration request. Upon approval a follow email up with details on how to set your password and login will be sent. </p>
+<p>Thank you for signing up!</p>
+<p>Your registration details have been submitted. Please be informed that a facilitator will review your registration request. Upon approval an email shall be sent to you with the details on how to set your password to login to the portal.</p>
+<br><p>-------------------------<br>
+WCC Youth Network<br>
+http://www.youth.oikoumene.org</p>
   </div>
 </body>
 </html>
