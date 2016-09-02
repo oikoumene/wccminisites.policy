@@ -84,7 +84,7 @@ This is an automatically generated notification. Please do not reply to this mes
      WCC Youth Network</property>
     <property name="recipients">afterfive2015@gmail.com</property>
     <property
-       name="subject">Congratulations your submitted content is already published on WCC Youth Network</property>
+       name="subject">A new content has published on WCC Youth Network</property>
    </action>
    <action type="collective.easytemplate.actions.Mail">
     <property name="source"/>
