@@ -41,5 +41,13 @@
         for="..interfaces.IRegistrationApproval"
         name="index_html"/>
     
+    <browser:page
+      for="*"
+      name="wccminisites_view"
+      class=".wccminisites_view.WccminisitesView"
+      layer="..interfaces.IProductSpecific"
+      permission="zope2.View"
+      />
+    
 
 </configure>
