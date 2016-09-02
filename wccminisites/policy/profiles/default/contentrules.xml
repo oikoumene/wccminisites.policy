@@ -46,7 +46,7 @@ This is an automatically generated notification. Please do not reply to this mes
      -------------------------
      WCC Youth Network
      http://www.youth.oikoumene.org</property>
-    <property name="recipients">${owner_emails}</property>
+    <property name="recipients">{{ view("wccminisites_view", "creators_emails") }}, {{ view("wccminisites_view", "site_admins_emails") }}</property>
     <property name="subject">Content Submission Received</property>
    </action>
   </actions>
@@ -99,7 +99,7 @@ This is an automatically generated notification. Please do not reply to this mes
      -------------------------
      WCC Youth Network
      http://www.youth.oikoumene.org</property>
-    <property name="recipients">${owner_emails}</property>
+    <property name="recipients">{{ view("wccminisites_view", "creators_emails") }}, {{ view("wccminisites_view", "site_admins_emails") }}</property>
     <property name="subject">Content Submission Received</property>
    </action>
   </actions>
