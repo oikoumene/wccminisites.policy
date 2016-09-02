@@ -7,6 +7,7 @@
     />
 <utility
     interface="wccminisites.policy.interfaces.IRegistrationApproval"
-    object="wcc_minisites_registration_approval"/>
+    object="wcc_minisites_registration_approval"
+    remove="true"/>
   </utilities>
 </componentregistry>
