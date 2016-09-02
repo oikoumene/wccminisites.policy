@@ -6,16 +6,22 @@ To: <tal:r replace="structure options/moderator"/>
 Subject: Registration at <tal:r replace="portal/title"/>
 Precedence: bulk
 
-A new member <tal:r replace="user/fullname"/> has registered and is awaiting approval.
+A new member has registered and is waiting for approval.
 
-If it is a valid member, please visit the link below and approve the member:
+Member Details:
+
+User: <tal:r replace="user/fullname"/>
+
+To approve/reject the member registration, please visit the link below:
 
 <tal:r replace="string:${portal/absolute_url}/wcc_minisites_registration_approval"/>
 
-The new member will get an email confirmation to set their initial password upon
-approval.
+Once approved, the new member will get an email confirmation to set their initial password and will then be able to login to the site.
 
---
+This is an automatically generated notification. Please do not reply to this message.
 
-This is an automated system message, please do not reply.
+-------------------------
+WCC Youth Network
+http://www.youth.oikoumene.org
+
 </tal:root>
