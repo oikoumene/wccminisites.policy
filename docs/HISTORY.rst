@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.1 - sept 13
+---------
+-changes in email template and workflow
+
 1.0dev1.1 - aug 31
 -added layer attribute
 
