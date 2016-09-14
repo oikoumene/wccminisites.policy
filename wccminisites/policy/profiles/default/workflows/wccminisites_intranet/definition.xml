@@ -171,7 +171,6 @@
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
    <permission-role>Reviewer</permission-role>
    <permission-role>Site Administrator</permission-role>
   </permission-map>
@@ -209,9 +208,10 @@
   <guard>
    <guard-role>Site Administrator</guard-role>
    <guard-role>Manager</guard-role>
+   <guard-role>Owner</guard-role>
   </guard>
  </transition>
- <transition transition_id="submit" title="Submit" new_state="pending" trigger="USER" before_script="" after_script="">
+ <transition transition_id="submit" title="Submit" new_state="shared_intranet" trigger="USER" before_script="" after_script="">
   <description>Share item with other registered users</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=submit" category="workflow" icon="">Submit for Publishing</action>
   <guard>
