@@ -27,7 +27,7 @@ This is an automatically generated notification. Please do not reply to this mes
      
      -------------------------
      WCC Youth Network</property>
-    <property name="recipients">afterfive2015@gmail.com</property>
+    <property name="recipients">afterfive2015@gmail.com, ahi@wcc-coe.org</property>
     <property
        name="subject">New contribution available on WCC Youth Network</property>
    </action>
@@ -82,7 +82,7 @@ This is an automatically generated notification. Please do not reply to this mes
      
      -------------------------
      WCC Youth Network</property>
-    <property name="recipients">afterfive2015@gmail.com</property>
+    <property name="recipients">afterfive2015@gmail.com, ahi@wcc-coe.org</property>
     <property
        name="subject">A new content has published on WCC Youth Network</property>
    </action>
