@@ -198,6 +198,7 @@
   <description>Content owner retracts shared item to make it private</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=retract" category="workflow" icon="">Retract</action>
   <guard>
+    <guard-role>Owner</guard-role>
    <guard-role>Site Administrator</guard-role>
    <guard-role>Manager</guard-role>
   </guard>
