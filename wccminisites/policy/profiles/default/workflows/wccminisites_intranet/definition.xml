@@ -132,7 +132,7 @@
    <permission-role>Site Administrator</permission-role>
   </permission-map>
  </state>
- <state state_id="shared_intranet" title="Shared: Intranet">
+ <state state_id="shared_intranet" title="Published">
   <description>item at this state is accessible by registered users</description>
   <exit-transition transition_id="retract"/>
   <permission-map name="Access contents information" acquired="False">
@@ -206,7 +206,7 @@
  </transition>
  <transition transition_id="share_intranet" title="Share" new_state="shared_intranet" trigger="USER" before_script="" after_script="">
   <description>Share item with other registered users</description>
-  <action url="%(content_url)s/content_status_modify?workflow_action=share_intranet" category="workflow" icon="">Share: Intranet</action>
+  <action url="%(content_url)s/content_status_modify?workflow_action=share_intranet" category="workflow" icon="">Submit for publication</action>
   <guard>
    <guard-role>Site Administrator</guard-role>
    <guard-role>Manager</guard-role>
