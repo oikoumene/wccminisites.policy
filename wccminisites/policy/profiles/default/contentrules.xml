@@ -101,6 +101,5 @@ This is an automatically generated notification. Please do not reply to this mes
     <property name="recipients">{{ view("wccminisites_view", "creators_emails") }}, {{ view("wccminisites_view", "site_admins_emails") }}</property>
     <property name="subject">Content Submission Received</property>
    </action>
-  </actions>
  </rule>
 </contentrules>
