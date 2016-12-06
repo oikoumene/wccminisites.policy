@@ -66,11 +66,10 @@ This is an automatically generated notification. Please do not reply to this mes
                     <element>News Item</element>
                 </property>
     </condition>
+      <condition type="plone.actions.Workflow">
+                  <property name="transition">share_intranet</property>
+                </condition>
     </conditions>
-  <actions>
-   <action type="plone.actions.Workflow">
-    <property name="transition">share_intranet</property>
-   </action>
    <action type="collective.easytemplate.actions.Mail">
     <property name="source"/>
     <property
