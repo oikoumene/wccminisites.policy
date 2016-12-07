@@ -1,5 +1,8 @@
 Changelog
 =========
+1.2 - dec 7
+--------
+-modified workflow and contentrule
 
 1.1 - sept 13
 ---------
