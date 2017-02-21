@@ -1,6 +1,11 @@
 from zope.interface import Interface
 from wccminisites.policy import MessageFactory as _
 from quintagroup.formlib.captcha import Captcha
+from zope import schema
+from plone.directives import dexterity, form
+from collective.z3cform.datagridfield import DataGridFieldFactory
+from collective.z3cform.datagridfield.registry import DictRow
+from plone.supermodel import model
 
 class IProductSpecific(Interface):
     pass
@@ -36,3 +41,18 @@ class IRegistrationApproval(Interface):
 
     def reject(key):
         pass
+    
+    
+class IChurchMember(Interface):
+    church_member_values = schema.TextLine(
+        title = u"Church Member",
+    )
+    
+class IChurchMemberDGForm(Interface):
+    
+    #form.widget(church_member=DataGridFieldFactory)
+    church_member = schema.List(
+        title=u"Chuch Member",
+        required=False,
+        value_type=DictRow(title=u"Value", schema=IChurchMember)
+    )
