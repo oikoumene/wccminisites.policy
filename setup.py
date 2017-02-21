@@ -40,6 +40,7 @@ setup(name='wccminisites.policy',
           #'ilokn.registration',
           'wcc.registration',
           'quintagroup.captcha.core',
+          'collective.z3cform.datagridfield',
           # -*- Extra requirements: -*-
       ],
       extras_require={
