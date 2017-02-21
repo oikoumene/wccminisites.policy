@@ -2,4 +2,7 @@
 <object name="portal_memberdata" meta_type="Plone Memberdata Tool">
   <property name="twitter_username" type="string"></property>
   <property name="user_biography" type="string"></property>
+  <property name="church" type="string"></property>
+  <property name="region" type="string"></property>
+  <property name="wcc_commission" type="string"></property>
 </object>
