@@ -52,6 +52,11 @@
         for=".interfaces.IUserApprovedEvent"
         handler=".mailnotification.handle_approve" />
     
-	
+	<browser:page
+        name="church-member-list"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".controlpanel.ChurchMemberFormView"
+        permission="cmf.ManagePortal"
+        />
 
 </configure>
