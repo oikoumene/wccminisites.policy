@@ -66,7 +66,7 @@
 												Author name</b>
 										  </li>
 										  <li tal:condition="python: author_info['church']">
-											<div tal:content="python: author_info['church']"></div>
+											<div tal:content="python: 'Church: '+author_info['church']"></div>
 										  </li>
 										  <!--<li tal:condition="python: author_info['location']">
 											<div tal:content="python: author_info['location']"></div>
