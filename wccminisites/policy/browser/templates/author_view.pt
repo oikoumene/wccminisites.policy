@@ -66,19 +66,19 @@
 												Author name</b>
 										  </li>
 										  <li tal:condition="python: author_info['church']">
-											<div tal:content="python: 'Church: '+author_info['church']"></div>
+											 <strong>Church: <span tal:content="python: author_info['church']"></span></strong>
 										  </li>
-										  <!--<li tal:condition="python: author_info['location']">
-											<div tal:content="python: author_info['location']"></div>
-										  </li>-->
+										  <li tal:condition="python: author_info['location']">
+											<strong tal:content="python: author_info['location']"></strong>
+										  </li>
 										  <li tal:condition="python: not author_info['fullname']" tal:content="python: author_info['id']">
 												Author ID
 										  </li>
 										  <li tal:define="email python: author_info['email']" tal:condition="email">
-											<a tal:attributes="href string: mailto:${email}" tal:content="email"/>
+											<strong><a tal:attributes="href string: mailto:${email}" tal:content="email"/></strong>
 										  </li>
 										  <li tal:condition="python: author_info['homepage']">
-											<div>Homepage: <a target="_blank" tal:attributes="href python: author_info['homepage']" tal:content="python: author_info['homepage']"></a></div>
+											<div><strong>Homepage: <a target="_blank" tal:attributes="href python: author_info['homepage']" tal:content="python: author_info['homepage']"></a></strong></div>
 										  </li>
 										</ul>
 										<!--edit profile button-->
@@ -91,7 +91,7 @@
 											</div>
 											
 											<p class="discreet">
-												  <tal:location condition="python: author_info['location']"
+												  <!--<tal:location condition="python: author_info['location']"
 																i18n:translate="text_location">
 													  Location:
 													  <span tal:content="python: author_info['location']"
@@ -99,7 +99,7 @@
 															i18n:name="location">
 														  Some location
 													  </span>
-												  </tal:location>
+												  </tal:location>-->
 						  
 												  <tal:language condition="python: author_info['language']">
 													  &mdash;
