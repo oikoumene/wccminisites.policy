@@ -44,6 +44,8 @@ class author_view(grok.View):
                     results['language'] = author.getProperty('language')
                     results['email'] = author.getProperty('email')
                     results['twitter'] = author.getProperty('twitter_username')
+                    results['church'] = author.getProperty('church')
+                    results['homepage'] = author.getProperty('home_page')
         return results
                 
     def posts(self, author=None):
