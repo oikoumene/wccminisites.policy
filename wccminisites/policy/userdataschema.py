@@ -56,14 +56,14 @@ regions_val = SimpleVocabulary([SimpleTerm(value=u'Africa', title=_(u'Africa')),
                             SimpleTerm(value=u'North America', title=_(u'North America')),
                             SimpleTerm(value=u'Pacific', title=_(u'Pacific'))])
 
-wcc_commission_val = SimpleVocabulary([SimpleTerm(value=_(u'Commission of the Churches on International Affairs'), title=_(u'Commission of the Churches on International Affairs')),
-                                       SimpleTerm(value=_(u'Commission on Education and Ecumenical Formation'), title=_(u'Commission on Education and Ecumenical Formation')),
-                                       SimpleTerm(value=_(u'Commission on Faith and Order'), title=_(u'Commission on Faith and Order')),
-                                       SimpleTerm(value=_(u'Commission on World Mission and Evangelism'), title=_(u'Commission on World Mission and Evangelism')),
-                                       SimpleTerm(value=_(u'ECHOS Commission on Youth in the Ecumenical Movement'), title=_(u'ECHOS Commission on Youth in the Ecumenical Movement')),
-                                       SimpleTerm(value=_(u'Joint Consultative Commission with Christian World Communions'), title=_(u'Joint Consultative Commission with Christian World Communions')),
-                                       SimpleTerm(value=_(u'Joint Consultative Group between the WCC and Pentecostals'), title=_(u'Joint Consultative Group between the WCC and Pentecostals')),
-                                       SimpleTerm(value=_(u'Joint Working Group with the Roman Catholic Church'), title=_(u'Joint Working Group with the Roman Catholic Church'))])
+wcc_commission_val = SimpleVocabulary([SimpleTerm(value='Commission of the Churches on International Affairs', title=_(u'Commission of the Churches on International Affairs')),
+                                       SimpleTerm(value='Commission on Education and Ecumenical Formation', title=_(u'Commission on Education and Ecumenical Formation')),
+                                       SimpleTerm(value='Commission on Faith and Order', title=_(u'Commission on Faith and Order')),
+                                       SimpleTerm(value='Commission on World Mission and Evangelism', title=_(u'Commission on World Mission and Evangelism')),
+                                       SimpleTerm(value='ECHOS Commission on Youth in the Ecumenical Movement', title=_(u'ECHOS Commission on Youth in the Ecumenical Movement')),
+                                       SimpleTerm(value='Joint Consultative Commission with Christian World Communions', title=_(u'Joint Consultative Commission with Christian World Communions')),
+                                       SimpleTerm(value='Joint Consultative Group between the WCC and Pentecostals', title=_(u'Joint Consultative Group between the WCC and Pentecostals')),
+                                       SimpleTerm(value='Joint Working Group with the Roman Catholic Church', title=_(u'Joint Working Group with the Roman Catholic Church'))])
 
 class IEnhancedUserDataSchema(IUserDataSchema):
     # ...
