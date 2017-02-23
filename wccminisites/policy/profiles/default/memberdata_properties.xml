@@ -4,5 +4,5 @@
   <property name="user_biography" type="string"></property>
   <property name="church" type="string"></property>
   <property name="region" type="string"></property>
-  <property name="wcc_commission" type="string"></property>
+  <property name="wcc_commission" type="multiple selection" select_variable='wcc_commission_values'></property>
 </object>
