@@ -7,5 +7,11 @@
         title="Profile Link Portlet"
         description=""
     />
+    
+    <portlet
+        addview="wccminisites.policy.NetworkSearchPortlet"
+        title="Network Search Facility"
+        description=""
+    />
 
 </portlets>
