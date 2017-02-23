@@ -13,5 +13,13 @@
         addview=".profile_link.AddForm"
         editview=".profile_link.EditForm"
         />
+    
+    <plone:portlet
+        name="wccminisites.policy.NetworkSearchPortlet"
+        interface=".networksearchportlet.INetworkSearchPortlet"
+        assignment=".networksearchportlet.Assignment"
+        renderer=".networksearchportlet.Renderer"
+        addview=".networksearchportlet.AddForm"
+        />
 
 </configure>
