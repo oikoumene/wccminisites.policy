@@ -1,0 +1,24 @@
+<div class='portlet'>
+    <tal:if tal:define="default_view context/defaultView" tal:condition="python: default_view == 'member_listing_view'">
+        <form method='post' tal:attributes="action string:${context/absolute_url}">
+            <div>
+                <label>Search By</label>
+                <div tal:define="options view/search_params">
+                    <select name="search_by">
+                        <tal:entry tal:repeat="option options">
+                            <option tal:attributes="value option; selected python: 'true' if option == view.search_values('search_by') else ''" tal:content="option"></option>
+                        </tal:entry>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <label>Keyword</label>
+                <div><input placeholder="Enter keywords" name="keyword" tal:attributes="value python: view.search_values('keyword')"/></div>
+            </div>
+            <br/>
+            <div>
+                <input type='submit' value='Search' />
+            </div>
+        </form>
+    </tal:if>
+</div>
