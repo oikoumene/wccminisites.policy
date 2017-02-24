@@ -1,5 +1,8 @@
 Changelog
 =========
+1.3.1 - feb 24
+-made church required
+
 1.3 - feb 24
 -added fields in profile and modified networks view
 
