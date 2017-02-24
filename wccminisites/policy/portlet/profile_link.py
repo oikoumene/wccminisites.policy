@@ -75,6 +75,9 @@ class Renderer(base.Renderer):
             if user_data:
                 result['fullname'] = user_data.getProperty('fullname')
                 result['email'] = user_data.getProperty('email')
+                result['church'] = user_data.getProperty('church')
+                result['country'] = user_data.getProperty('location')
+                result['homepage'] = user_data.getProperty('home_page')
         return result
         
 
