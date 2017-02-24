@@ -150,4 +150,4 @@ class CustomizedUserDataPanel(UserDataPanel):
         self.form_fields['user_biography'].custom_widget = WYSIWYGWidget
         self.form_fields['location'].field.title = u"Country"
         self.form_fields['location'].field.description = u"(Country of origin and/or country of residence)"
-        
+        self.form_fields['location'].field.required = True
