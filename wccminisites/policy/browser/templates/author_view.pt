@@ -54,9 +54,9 @@
 							<div class="row">
 								<!--author profile -->
 								<div class="medium-3 medium-push-9 columns">
-									<div id="author-prof-container">
+									<!--<div id="author-prof-container">-->
 									
-										<div id="prof-img">
+										<!--<div id="prof-img">
 										  <img src="http://tempura.afterfivetech.com:9099/wccminsite/defaultUser.png" alt="" class="portraitPhoto" width="200">
 										</div>
 										
@@ -80,18 +80,18 @@
 										  <li tal:condition="python: author_info['homepage']">
 											<div><strong>Homepage: <a target="_blank" tal:attributes="href python: author_info['homepage']" tal:content="python: author_info['homepage']"></a></strong></div>
 										  </li>
-										</ul>
+										</ul>-->
 										<!--edit profile button-->
-										<div i18n:domain="wccminisites.policy" tal:condition="not: context/@@plone_portal_state/anonymous">
-											<div i18n:domain="wccminisites.policy" tal:condition="view/filter_edit_profile">
+										<!--<div i18n:domain="wccminisites.policy" tal:condition="not: context/@@plone_portal_state/anonymous">-->
+											<!--<div i18n:domain="wccminisites.policy" tal:condition="view/filter_edit_profile">
 												  <a tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/@@personal-information">
 													  <span class="tiny button" tal:content="string:Edit Profile"/>
 						  
 												  </a>
-											</div>
+											</div>-->
 											
-											<p class="discreet">
-												  <!--<tal:location condition="python: author_info['location']"
+											<!--<p class="discreet">
+												  <tal:location condition="python: author_info['location']"
 																i18n:translate="text_location">
 													  Location:
 													  <span tal:content="python: author_info['location']"
@@ -99,36 +99,36 @@
 															i18n:name="location">
 														  Some location
 													  </span>
-												  </tal:location>-->
+												  </tal:location>
 						  
 												  <tal:language condition="python: author_info['language']">
 													  &mdash;
 													  <span i18n:translate="label_main_language">Main Language:</span>
 													  <span tal:replace="python: author_info['language']">Some language</span>
 												  </tal:language>
-											</p>
+											</p>-->
 										
 											<!--twitter feed-->
-											<div id="author-twitter-feed">
-												<div tal:define="twittername python: author_info['twitter']" tal:condition="twittername">
-												 <a
-												 tal:content= "python: 'Tweets by' + twittername "
-												 class="twitter-timeline" 
-												 tal:attributes="href python: 'https://twitter.com/'+ twittername;
-																 data-widget-id python: '588968200643092480';
-																 data-screen-name twittername;">Tweets by</a>
-												 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-												 </div>
-											</div>
-										</div>
-									</div><!--end author prof-->
+											<!--<div id="author-twitter-feed">
+													<div tal:define="twittername python: author_info['twitter']" tal:condition="twittername">
+													 <a
+													 tal:content= "python: 'Tweets by' + twittername "
+													 class="twitter-timeline" 
+													 tal:attributes="href python: 'https://twitter.com/'+ twittername;
+																	 data-widget-id python: '588968200643092480';
+																	 data-screen-name twittername;">Tweets by</a>
+													 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+													 </div>
+											</div>-->
+										<!--</div>--><!-- end edit profile button-->
+									<!--</div>--><!--end author prof-->
 								</div><!--end-->
 								
 								<!--author created posts-->
 								<div class="medium-9 medium-pull-3 columns">
 									
 									<!--author description-->
-									<div class="_documentDescription" tal:content="structure python: author_info['user_biography']" />
+									<div class="_documentDescription" tal:content="structure python: author_info['user_biography']"></div>
 									
 										<tal:authorContent define="author_content python: view.posts(author_info['id'])"
 													   condition="author_content">
@@ -248,16 +248,16 @@
 											   </p>
 									
 										</tal:authorContent>
-									</div>
+									
 								
-								</div>
+								</div> <!-- end medium-9 medium-pull-3 columns -->
 							
 							
+							</div><!-- end of class row -->
                             
-                            
-                            <div class="visualClear"><!-- --></div>
-                        </div>
-                    </div>
+                            <div class="visualClear"></div>
+                        </div> <!-- end of content-core -->
+                    </div> <!-- end of id content -->
 
                     
                     
