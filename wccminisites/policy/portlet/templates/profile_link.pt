@@ -7,7 +7,14 @@
         </div>
         <ul id="prof-info">
             <li tal:define="fullname python: user['fullname']" tal:content="python: fullname.title()"></li>
-            <li tal:content="python: user['email']"></li>
+            <li tal:condition="python: user['church']">Church: <span tal:content="python: user['church']"></span></li>
+            <li tal:content="python: user['country']"></li>
+            <li tal:define="email python: user['email']" tal:condition="email">
+                <a tal:attributes="href string:mailto: ${email}" tal:content="email"></a>
+            </li>
+            <li tal:condition="python: user['homepage']">
+                Homepage: <a target="_blank"  tal:content="python: user['homepage']"></a>
+            </li>
         </ul>
     </tal:if>
     <div i18n:domain="wccminisites.policy">
