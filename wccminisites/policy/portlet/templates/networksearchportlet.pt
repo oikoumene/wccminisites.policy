@@ -13,11 +13,10 @@
             </div>
             <div>
                 <label>Keyword</label>
-                <div><input placeholder="Enter keywords" name="keyword" tal:attributes="value python: view.search_values('keyword')"/></div>
+                <div><input type="text" placeholder="Enter keywords" name="keyword" tal:attributes="value python: view.search_values('keyword')"/></div>
             </div>
-            <br/>
             <div>
-                <input type='submit' value='Search' />
+                <input type='submit' class="button expand small" value='Search' />
             </div>
         </form>
     </tal:if>
