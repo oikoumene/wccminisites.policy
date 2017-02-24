@@ -63,7 +63,7 @@ class member_listing_view(grok.View):
                             member = self.portal_membership.getMemberById(gr.getUserName())
                             if member and member.getProperty('region'):
                                 
-                                if keyword in member.getProperty('region'):
+                                if keyword in member.getProperty('region').lower():
                                     data = {}
                                     data['img'] = self.portal_membership.getPersonalPortrait(gr.getUserName()).absolute_url()
                                     data['fullname'] = member.getProperty('fullname')
@@ -73,9 +73,10 @@ class member_listing_view(grok.View):
                         for gr in groups.getGroupMembers():
                         
                             member = self.portal_membership.getMemberById(gr.getUserName())
+                            
                             if member and member.getProperty('location'):
                                 
-                                if keyword in member.getProperty('location'):
+                                if keyword in member.getProperty('location').lower():
                                     data = {}
                                     data['img'] = self.portal_membership.getPersonalPortrait(gr.getUserName()).absolute_url()
                                     data['fullname'] = member.getProperty('fullname')
