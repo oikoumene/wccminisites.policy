@@ -1,5 +1,8 @@
 Changelog
 =========
+1.3.2 - feb 25
+-modified portlet
+
 1.3.1 - feb 24
 -made church required
 
