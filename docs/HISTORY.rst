@@ -1,5 +1,8 @@
 Changelog
 =========
+1.4 - feb 27
+-removed search portlet on the right side and placed on browser vieew
+
 1.3.2 - feb 25
 -modified portlet
 
