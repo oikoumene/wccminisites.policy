@@ -114,3 +114,12 @@ class member_listing_view(grok.View):
         if results:
             results.sort(key = lambda x :x['fullname'])
         return results
+    
+    def search_params(self):
+        return ('Name', 'Church', 'Country', 'Region', 'WCC Commission')
+    
+    def search_values(self, val):
+        if self.request.form:
+            if val in self.request.form:
+                return self.request.form[val]
+        return ''

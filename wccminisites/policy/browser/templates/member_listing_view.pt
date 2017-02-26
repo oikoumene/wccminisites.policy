@@ -37,23 +37,47 @@
 
     <metal:content-core fill-slot="content-core">
 
-            <div tal:content="structure context/getText"/>
-                <tal:block tal:define="pas_member context/@@pas_member;
-                                       brains view/network_group;
-                                       toLocalizedTime nocall: context/@@plone/toLocalizedTime;
-                                       navigation_root_url context/@@plone_portal_state/navigation_root_url;" tal:condition="brains">
-                      <tal:entry tal:repeat="item brains">
-                            <div class="member-image-listing">
-                                <img class="portraitPhoto" tal:attributes="src python: item['img']"/>
-                                <p>
-                                    <a tal:attributes="href python: navigation_root_url+'/author_view?id='+item['username']">
-                                        <span tal:content="python: item['fullname']"/>
-                                    </a>
-                                </p>
-                            </div>
-                      </tal:entry>
-    
-                </tal:block>
+            <div tal:content="structure context/getText"></div>
+            <!-- search members -->
+            <div>
+                
+                <form method='post' tal:attributes="action string:${context/absolute_url}">
+                    <div>
+                        <label>Find Members</label>
+                        <div tal:define="options view/search_params">
+                            <select name="search_by">
+                                <tal:entry tal:repeat="option options">
+                                    <option tal:attributes="value option; selected python: 'true' if option == view.search_values('search_by') else ''" tal:content="option"></option>
+                                </tal:entry>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label>Keyword</label>
+                        <div><input type="text" placeholder="Enter keywords" name="keyword" tal:attributes="value python: view.search_values('keyword')"/></div>
+                    </div>
+                    <div>
+                        <input type='submit' class="button expand small" value='Search' />
+                    </div>
+                </form>
+                
+            </div>
+            <tal:block tal:define="pas_member context/@@pas_member;
+                                   brains view/network_group;
+                                   toLocalizedTime nocall: context/@@plone/toLocalizedTime;
+                                   navigation_root_url context/@@plone_portal_state/navigation_root_url;" tal:condition="brains">
+                  <tal:entry tal:repeat="item brains">
+                        <div class="member-image-listing">
+                            <img class="portraitPhoto" tal:attributes="src python: item['img']"/>
+                            <p>
+                                <a tal:attributes="href python: navigation_root_url+'/author_view?id='+item['username']">
+                                    <span tal:content="python: item['fullname']"/>
+                                </a>
+                            </p>
+                        </div>
+                  </tal:entry>
+
+            </tal:block>
 
     </metal:content-core>
 
