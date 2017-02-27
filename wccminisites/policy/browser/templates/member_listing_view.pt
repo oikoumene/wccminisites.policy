@@ -39,8 +39,36 @@
 
             <div tal:content="structure context/getText"></div>
             <!-- search members -->
-            <div>
+
+                <div class="row">
+                    <form method='post' tal:attributes="action string:${context/absolute_url}">
+                        <div class="large-4 columns">
+                            <label>Find Members
+                                <div tal:define="options view/search_params">
+                                    <select name="search_by">
+                                        <tal:entry tal:repeat="option options">
+                                            <option tal:attributes="value option; selected python: 'true' if option == view.search_values('search_by') else ''" tal:content="option"></option>
+                                        </tal:entry>
+                                    </select>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="large-6 columns">
+                            <label>Keyword
+                                <input type="text" placeholder="Enter keywords" name="keyword" tal:attributes="value python: view.search_values('keyword')"/>
+                            </label>
+                        </div>
+                        <div class="large-2  columns">
+                            <div class="row collapse">
+                                <label><br />
+                                    <input type='submit' class="button expand tiny" value='Search' />
+                                </label>    
+                            </div>
+                        </div>
+                    </form>
+                </div>
                 
+                <!--
                 <form method='post' tal:attributes="action string:${context/absolute_url}">
                     <div>
                         <label>Find Members</label>
@@ -54,14 +82,14 @@
                     </div>
                     <div>
                         <label>Keyword</label>
-                        <div><input type="text" placeholder="Enter keywords" name="keyword" tal:attributes="value python: view.search_values('keyword')"/></div>
+                        <div></div>
                     </div>
                     <div>
                         <input type='submit' class="button expand small" value='Search' />
                     </div>
                 </form>
-                
-            </div>
+                -->
+
             <tal:block tal:define="pas_member context/@@pas_member;
                                    brains view/network_group;
                                    toLocalizedTime nocall: context/@@plone/toLocalizedTime;
