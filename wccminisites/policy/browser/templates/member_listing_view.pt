@@ -41,31 +41,38 @@
             <!-- search members -->
 
                 <div class="row">
-                    <form method='post' tal:attributes="action string:${context/absolute_url}">
-                        <div class="large-4 columns">
-                            <label>Find Members
-                                <div tal:define="options view/search_params">
-                                    <select name="search_by">
-                                        <tal:entry tal:repeat="option options">
-                                            <option tal:attributes="value option; selected python: 'true' if option == view.search_values('search_by') else ''" tal:content="option"></option>
-                                        </tal:entry>
-                                    </select>
+                    <div class="small-12 columns">
+                        <form method='post' tal:attributes="action string:${context/absolute_url}">
+                            <fieldset>
+                                <legend>Find Members</legend>    
+                                <div class="row">
+                                    <div class="large-4 columns">
+                                        <label>
+                                            <div tal:define="options view/search_params">
+                                                <select name="search_by">
+                                                    <tal:entry tal:repeat="option options">
+                                                        <option tal:attributes="value option; selected python: 'true' if option == view.search_values('search_by') else ''" tal:content="option"></option>
+                                                    </tal:entry>
+                                                </select>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="large-6 columns">
+                                        <label>
+                                            <input type="text" placeholder="Enter keywords" name="keyword" tal:attributes="value python: view.search_values('keyword')"/>
+                                        </label>
+                                    </div>
+                                    <div class="large-2  columns">
+                                        <div class="row collapse">
+                                            <label>
+                                                <input type='submit' class="button expand tiny" value='Search' />
+                                            </label>    
+                                        </div>
+                                    </div>
                                 </div>
-                            </label>
-                        </div>
-                        <div class="large-6 columns">
-                            <label><br/>
-                                <input type="text" placeholder="Enter keywords" name="keyword" tal:attributes="value python: view.search_values('keyword')"/>
-                            </label>
-                        </div>
-                        <div class="large-2  columns">
-                            <div class="row collapse">
-                                <label><br />
-                                    <input type='submit' class="button expand tiny" value='Search' />
-                                </label>    
-                            </div>
-                        </div>
-                    </form>
+                            </fieldset>
+                        </form>
+                    </div>
                 </div>
                 
                 <!--
