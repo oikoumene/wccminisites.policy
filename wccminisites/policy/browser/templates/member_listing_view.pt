@@ -54,7 +54,7 @@
                             </label>
                         </div>
                         <div class="large-6 columns">
-                            <label>Keyword
+                            <label><br/>
                                 <input type="text" placeholder="Enter keywords" name="keyword" tal:attributes="value python: view.search_values('keyword')"/>
                             </label>
                         </div>
