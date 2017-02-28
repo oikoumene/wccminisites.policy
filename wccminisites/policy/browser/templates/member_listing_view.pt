@@ -7,6 +7,21 @@
       i18n:domain="plone">
 
 <body>
+    <metal:block fill-slot="javascript_head_slot">
+        <script type="text/javascript">
+            $(document).ready(function(){
+                marker = $('#is_submitted').val();
+                
+                if (marker == 1){
+                    $('html, body').animate({
+                        scrollTop:$('#search_form').offset().top
+                    }, 10);
+                }
+                
+                
+            })
+        </script>
+    </metal:block>
     
     <metal:styleslot fill-slot='style_slot'>
         <style type="text/css" media="all">
@@ -43,7 +58,7 @@
                 <div class="row">
                     <div class="small-12 columns">
                         <form method='post' tal:attributes="action string:${context/absolute_url}">
-                            <fieldset>
+                            <fieldset id="search_form">
                                 <legend>Find Members</legend>    
                                 <div class="row">
                                     <div class="large-4 columns">
@@ -63,6 +78,7 @@
                                         </label>
                                     </div>
                                     <div class="large-2  columns">
+                                        <input style="display: none" type='text' tal:attributes="value view/form_sub" name='is_submitted' id="is_submitted"/>
                                         <div class="row collapse">
                                             <label>
                                                 <input type='submit' class="button expand tiny" value='Search' />
@@ -96,7 +112,7 @@
                     </div>
                 </form>
                 -->
-
+            
             <tal:block tal:define="pas_member context/@@pas_member;
                                    brains view/network_group;
                                    toLocalizedTime nocall: context/@@plone/toLocalizedTime;

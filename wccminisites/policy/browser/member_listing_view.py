@@ -123,3 +123,9 @@ class member_listing_view(grok.View):
             if val in self.request.form:
                 return self.request.form[val]
         return ''
+    
+    def form_sub(self, val=None):
+        if self.request.form:
+            if 'is_submitted' in self.request.form:
+                return 1
+        return 0
