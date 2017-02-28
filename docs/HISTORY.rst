@@ -1,5 +1,14 @@
 Changelog
 =========
+1.4.3 - feb 28
+- scroll to form upon search members on network page
+
+1.4.2 - feb 27
+- added fieldset
+
+1.4.1 - feb 27
+- changed label into find members and adjusted the search button
+
 1.4 - feb 27
 -removed search portlet on the right side and placed on browser vieew
 
