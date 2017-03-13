@@ -1,5 +1,8 @@
 Changelog
 =========
+1.4.4 - march 13
+- fixed unicode problems with church datagrid and guard duplicate entries on personal information
+
 1.4.3 - feb 28
 - scroll to form upon search members on network page
 
