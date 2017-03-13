@@ -39,9 +39,13 @@ def church_member_val(context):
     settings = registry.forInterface(IChurchMemberDGForm, check=False)
     values = []
     result = []
+    unique_list = []
     if settings.church_member:
         for val in settings.church_member:
-            values.append({'value':unicode(idnormalizer.normalize(val['church_member_values'])), 'title':val['church_member_values']})
+            cmv = unicode(idnormalizer.normalize(val['church_member_values']))
+            if cmv not in unique_list:
+                unique_list.append(cmv)
+                values.append({'value':unicode(idnormalizer.normalize(val['church_member_values'])), 'title':val['church_member_values']})
             #values.append(SimpleTerm(value=unicode(val['church_member_values']), token=unicode(val['church_member_values']), title=val['church_member_values']))
     if values:
         values.sort(key=lambda k:k['title'])
