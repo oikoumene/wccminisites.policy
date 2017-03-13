@@ -31,6 +31,7 @@ from plone.registry.interfaces import IRegistry
 from zope.component import getUtility
 from wccminisites.policy.interfaces import IChurchMemberDGForm
 from five import grok
+from plone.i18n.normalizer import idnormalizer
 
 @grok.provider(IContextSourceBinder)
 def church_member_val(context):
@@ -40,11 +41,11 @@ def church_member_val(context):
     result = []
     if settings.church_member:
         for val in settings.church_member:
-            values.append({'value':unicode(val['church_member_values']), 'title':val['church_member_values']})
+            values.append({'value':unicode(idnormalizer.normalize(val['church_member_values'])), 'title':val['church_member_values']})
             #values.append(SimpleTerm(value=unicode(val['church_member_values']), token=unicode(val['church_member_values']), title=val['church_member_values']))
     if values:
         values.sort(key=lambda k:k['title'])
-        result = [SimpleTerm(value=v['value'], token=v['value'], title=v['value']) for v in values]
+        result = [SimpleTerm(value=v['value'], token=v['value'], title=v['title']) for v in values]
     return SimpleVocabulary(result)
 
 regions_val = SimpleVocabulary([SimpleTerm(value=u'Africa', title=_(u'Africa')),
