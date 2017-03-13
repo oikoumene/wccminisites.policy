@@ -3,6 +3,10 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.interfaces import ISiteRoot
 from plone.app.discussion.interfaces import IConversation, IComment
 from Products.CMFCore.interfaces import IContentish
+from plone.i18n.normalizer import idnormalizer
+from plone.registry.interfaces import IRegistry
+from zope.component import getUtility
+from wccminisites.policy.interfaces import IChurchMemberDGForm
 
 grok.templatedir('templates')
 
@@ -18,6 +22,17 @@ class author_view(grok.View):
     def membership(self):
         return getToolByName(self.context, 'portal_membership')
     
+    def churchValues(self):
+        registry = getUtility(IRegistry)
+        settings = registry.forInterface(IChurchMemberDGForm, check=False)
+        contents = {}
+        if settings.church_member:
+            for val in settings.church_member:
+                cmv = unicode(idnormalizer.normalize(val['church_member_values']))
+                if cmv not in contents.keys():
+                    contents[cmv] = val['church_member_values']
+        return contents
+    
     def author_data(self):
         membership = self.membership
         request = self.request
@@ -32,6 +47,7 @@ class author_view(grok.View):
         membership = self.membership
         request = self.request
         results = {'fullname':'', 'portrait':'', 'user_biography':'', 'id':'', 'location':'', 'language':'', 'twitter':''}
+        churches  = self.churchValues()
         if request.form:
             if 'id' in request.form:
                 author = membership.getMemberById(request.form['id'])
@@ -44,7 +60,11 @@ class author_view(grok.View):
                     results['language'] = author.getProperty('language')
                     results['email'] = author.getProperty('email')
                     results['twitter'] = author.getProperty('twitter_username')
-                    results['church'] = author.getProperty('church')
+                    if author.getProperty('church') in churches.keys():
+                        results['church'] = churches[author.getProperty('church')]
+                    else:
+                        results['church'] = ''
+                    
                     results['homepage'] = author.getProperty('home_page')
         return results
                 
