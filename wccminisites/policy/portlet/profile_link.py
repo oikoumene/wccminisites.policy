@@ -13,6 +13,10 @@ from Acquisition import aq_inner, aq_parent
 from wccminisites.policy import MessageFactory as _
 from zope.component import getUtility, getAdapter, getMultiAdapter
 from Products.CMFCore.interfaces import ISiteRoot
+from plone.i18n.normalizer import idnormalizer
+from plone.registry.interfaces import IRegistry
+from zope.component import getUtility
+from wccminisites.policy.interfaces import IChurchMemberDGForm
 
 
 class IProfileLink(IPortletDataProvider):
@@ -61,6 +65,17 @@ class Renderer(base.Renderer):
             if self.request.form['id'] == current_user:
                 return True
         return False
+    
+    def churchValues(self):
+        registry = getUtility(IRegistry)
+        settings = registry.forInterface(IChurchMemberDGForm, check=False)
+        contents = {}
+        if settings.church_member:
+            for val in settings.church_member:
+                cmv = unicode(idnormalizer.normalize(val['church_member_values']))
+                if cmv not in contents.keys():
+                    contents[cmv] = val['church_member_values']
+        return contents
             
     
     def user_info(self):
@@ -68,6 +83,7 @@ class Renderer(base.Renderer):
         request = self.request
         user_id = ''
         result = {'portrait':'#', 'fullname':'', 'email':''}
+        churches  = self.churchValues()
         if 'id' in request.form:
             user_id = request.form['id']
             user_data = membership.getMemberById(user_id)
@@ -75,7 +91,10 @@ class Renderer(base.Renderer):
             if user_data:
                 result['fullname'] = user_data.getProperty('fullname')
                 result['email'] = user_data.getProperty('email')
-                result['church'] = user_data.getProperty('church')
+                if user_data.getProperty('church') in churches.keys():
+                    result['church'] = churches[user_data.getProperty('church')]
+                else:
+                    result['church'] = ''
                 result['country'] = user_data.getProperty('location')
                 result['homepage'] = user_data.getProperty('home_page')
         return result
