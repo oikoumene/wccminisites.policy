@@ -1,5 +1,8 @@
 Changelog
 =========
+1.4.5 - march 15
+-fixed datagrid on churches
+
 1.4.4 - march 13
 - fixed unicode problems with church datagrid and guard duplicate entries on personal information
 
