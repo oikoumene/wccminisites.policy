@@ -58,5 +58,9 @@
         class=".controlpanel.ChurchMemberFormView"
         permission="cmf.ManagePortal"
         />
+    
+    <browser:jbot
+		  directory="jbot_templates"
+          layer=".interfaces.IProductSpecific" />
 
 </configure>
