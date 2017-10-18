@@ -49,5 +49,16 @@
       permission="zope2.View"
       />
     
+    <browser:viewlet
+        name="plone.contentviews"
+        manager="plone.app.layout.viewlets.interfaces.IContentViews"
+        class="plone.app.layout.viewlets.common.ContentViewsViewlet"
+        template="templates/custom_contentviews.pt"
+        layer="..interfaces.IProductSpecific"
+        permission="zope2.View"
+        />
+    
+    
+    
 
 </configure>
