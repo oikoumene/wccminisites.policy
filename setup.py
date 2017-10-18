@@ -41,6 +41,7 @@ setup(name='wccminisites.policy',
           'wcc.registration',
           'quintagroup.captcha.core',
           'collective.z3cform.datagridfield',
+          'z3c.jbot',
           # -*- Extra requirements: -*-
       ],
       extras_require={
