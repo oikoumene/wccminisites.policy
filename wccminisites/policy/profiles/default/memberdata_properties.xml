@@ -4,5 +4,17 @@
   <property name="user_biography" type="string"></property>
   <property name="church" type="string"></property>
   <property name="region" type="string"></property>
+  
+  <property name="wcc_commission_values" type="lines">
+	  <element value="Commission of the Churches on International Affairs"/>
+	  <element value="Commission on Education and Ecumenical Formation"/>
+	  <element value="Commission on Faith and Order"/>
+    <element value="Commission on World Mission and Evangelism"/>
+    <element value="ECHOS Commission on Youth in the Ecumenical Movement"/>
+    <element value="Joint Consultative Commission with Christian World Communions"/>
+    <element value="Joint Consultative Group between the WCC and Pentecostals"/>
+    <element value="Joint Working Group with the Roman Catholic Church"/>
+  </property>
+  
   <property name="wcc_commission" type="multiple selection" select_variable='wcc_commission_values'></property>
 </object>
