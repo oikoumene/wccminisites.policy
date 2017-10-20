@@ -13,7 +13,7 @@
         
         <tal:block tal:define="menu_id menuItem/extra/id">
             
-            <tal:if tal:condition="python: context.id in ['resources', 'discussion', 'blog-stories']">
+            <tal:if tal:condition="python: context.id in ['resources', 'discussion', 'blog-stories'] and context.portal_type == 'Folder'">
                 
                 <tal:if tal:condition="python: menu_id == 'plone-contentmenu-factories'">
                     <dl class="actionMenu deactivated"
@@ -174,7 +174,7 @@
                 </tal:if>
             </tal:if>
             
-            <tal:if tal:condition="python: context.id not in ['resources', 'discussion', 'blog-stories']">
+            <tal:if tal:condition="python: (context.id in ['resources', 'discussion', 'blog-stories'] and context.portal_type != 'Folder') or (context.id not in ['resources', 'discussion', 'blog-stories'])">
                 <dl class="actionMenu deactivated"
                     tal:attributes="id menuItem/extra/id"
                     tal:define="submenu menuItem/submenu">
